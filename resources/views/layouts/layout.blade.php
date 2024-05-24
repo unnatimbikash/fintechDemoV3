@@ -8,14 +8,13 @@
     @include('layouts.navebar')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
+    @include('layouts.sidebar')
      {{-- @include('layouts.sidebar') --}}
       <div class="main-panel">
-        @yield('content')
+          @yield('content')
+          @include('layouts.footer')
       </div>
      </div>
-      @include('layouts.footer')
-  <!-- End custom js for this page-->
-
 </body>
 
 </html>
