@@ -1,8 +1,3 @@
-document.querySelector('.img-btn').addEventListener('click', function()
-	{
-		document.querySelector('.cont').classList.toggle('s-signup')
-	}
-);
 const domain = window.location.origin;
 $(document).ready(function () {
     $('#loginForm').on('submit', function (e) {
@@ -21,87 +16,97 @@ $(document).ready(function () {
                     type: 'POST',
                     url: $(this).attr('action'),
                     data: formData,
-                    success: function (response) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Your action was successful!',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1000,
-                            timerProgressBar: true
-                        }).then(() => {
-                            console.log("hii");
-                            window.location.href = domain+'/dashboard';
-                        });
+                    success: function (data) {
+                        if(data.success==true){
+                            Swal.fire({
+                                title: 'Success!',
+                                text: data.msg,
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true
+                            }).then(() => {
+                                window.location.href = domain+'/dashboard';
+                            });       
+                        }else{
+                            Swal.fire({
+                                title: 'Error!',
+                                text: data.msg,
+                                icon: 'error',
+                                timer: 2000,
+                            });
+                        }   
                     },
-                    error: function (response) {
+                    error: function (data) {
                         Swal.fire({
                             title: 'Error!',
-                            text: 'Check your username and password',
+                            text: 'Something Went wrong',
                             icon: 'error',
-                            timer: 1000,
+                            timer: 2000,
                         });
                     }
                 });
 
             }.bind(this), function (error) {
-                console.error('Error getting geolocation:', error);
-                // Proceed with AJAX request without geolocation data if there's an error
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function (response) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Your action was successful!',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1000,
-                            timerProgressBar: true
-                        }).then(() => {
-                            console.log("hii");
-                            window.location.href = domain+'/dashboard';
-                        });
-                    },
-                    error: function (response) {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Check your username and password',
-                            icon: 'error',
-                            timer: 1000,
-                        });
-                    }
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Allow Location',
+                    icon: 'error',
+                    timer: 2000,
                 });
             });
         } else {
-            console.log('Geolocation is not supported by this browser.');
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                success: function (response) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your action was successful!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1000,
-                        timerProgressBar: true
-                    }).then(() => {
-                        // console.log("hii");
-                        window.location.href = domain+'/dashboard';
-                    });
-                },
-                error: function (response) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Check your username and password',
-                        icon: 'error',
-                        timer: 1000,
-                    });
-                }
+            Swal.fire({
+                title: 'Error!',
+                text: 'location does not support in your browser',
+                icon: 'error',
+                timer: 2000,
             });
         }
     });
+
+    // add role in
+    $('#addrole_form').submit(function (e){
+        $('#role_submit').attr("disabled", 'disabled');
+        e.preventDefault();
+        var formdata=$(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: formdata,
+            success: function (data) {
+                $('#role_submit').removeAttr("disabled");
+                if(data.success==true){
+                    $('#addrole').modal('hide');
+                    $('#addrole_form').trigger('reset');
+                    Swal.fire({
+                        title: 'Success!',
+                        text: data.msg,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true
+                    });  
+                    $("#rolecard").load(location.href + " #role_card_body");   
+                }else{
+                    Swal.fire({
+                        title: 'Error!',
+                        text: data.msg,
+                        icon: 'error',
+                        timer: 2000,
+                    });
+                }   
+            },
+            error: function (data){
+                $('#role_submit').removeAttr("disabled");
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something Went Wrong',
+                    icon: 'error',
+                    timer: 2000,
+                });
+            }
+        });
+    });
+
 });

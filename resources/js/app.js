@@ -1,23 +1,18 @@
-import './bootstrap';
 document.querySelector('.img-btn').addEventListener('click', function()
 	{
 		document.querySelector('.cont').classList.toggle('s-signup')
 	}
 );
+const domain = window.location.origin;
 $(document).ready(function () {
     $('#loginForm').on('submit', function (e) {
         e.preventDefault();
-
-        // Get geolocation data
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
-
-                // Include latitude and longitude in the AJAX data
+                console.log(latitude,longitude);
                 var formData = $(this).serialize() + '&latitude=' + latitude + '&longitude=' + longitude;
-
-                // AJAX request with geolocation data
                 $.ajax({
                     type: 'POST',
                     url: $(this).attr('action'),
@@ -25,83 +20,40 @@ $(document).ready(function () {
                     success: function (response) {
                         Swal.fire({
                             title: 'Success!',
-                            text: 'Your action was successful!',
+                            text: 'Login Successfull !',
                             icon: 'success',
                             showConfirmButton: false,
-                            timer: 1000,
+                            timer: 2000,
                             timerProgressBar: true
                         }).then(() => {
                             console.log("hii");
-                            window.location.href = `{{ route('dashboard') }}`;
+                            window.location.href = domain+'/dashboard';
                         });
                     },
                     error: function (response) {
                         Swal.fire({
                             title: 'Error!',
-                            text: 'Check your username and password',
+                            text: 'Invalid Login Credential',
                             icon: 'error',
-                            timer: 1000,
+                            timer: 200,
                         });
                     }
                 });
 
             }.bind(this), function (error) {
-                console.error('Error getting geolocation:', error);
-                // Proceed with AJAX request without geolocation data if there's an error
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function (response) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Your action was successful!',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1000,
-                            timerProgressBar: true
-                        }).then(() => {
-                            console.log("hii");
-                            window.location.href = `{{ route('dashboard') }}`;
-                        });
-                    },
-                    error: function (response) {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Check your username and password',
-                            icon: 'error',
-                            timer: 1000,
-                        });
-                    }
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Turn On Location in browser',
+                    icon: 'error',
+                    timer: 2000,
                 });
             });
         } else {
-            console.log('Geolocation is not supported by this browser.');
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                success: function (response) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your action was successful!',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 1000,
-                        timerProgressBar: true
-                    }).then(() => {
-                        // console.log("hii");
-                        window.location.href = `{{ route('dashboard') }}`;
-                    });
-                },
-                error: function (response) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Check your username and password',
-                        icon: 'error',
-                        timer: 1000,
-                    });
-                }
+            Swal.fire({
+                title: 'Error!',
+                text: 'location Doesnot support in your browser',
+                icon: 'error',
+                timer: 2000,
             });
         }
     });

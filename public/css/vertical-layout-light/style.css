@@ -30593,3 +30593,187 @@ div.tagsinput span.tag a {
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
+
+.percentage-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #8b8ae6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+}
+
+.ms-3 {
+  margin-left: 10px;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+
+
+.view-button {
+  background-color: transparent !important;
+  border: none !important;
+  color: white; /* Adjust color to match the primary color */
+  padding: 0; /* Remove padding if any */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+.toggle-buttons .btn {
+  padding: 5px 10px;
+  color: white;
+}
+
+.modal .modal-dialog .modal-content .modal-header {
+  padding: 15px 29px !important;
+}
+.modal .modal-dialog .modal-content .modal-body {
+  padding: 10px 26px !important;
+}
+.form-group {
+  margin-bottom: 0.5rem !important;
+}
+.form-check-input {
+   
+    margin-left: 0.75rem !important;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 0px !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+   
+.accordion {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.35rem !important;}
+  
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0rem 0rem !important;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+/* enable disable switch */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* Slider before state */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* Checked state */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+/* Checked before state */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Custom CSS to remove borders from list items */
+.custom-list-group .list-group-item {
+  border: none;
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.custom-list-group .list-group-item:hover {
+  background-color: #f0f0f0; /* Add hover effect */
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+}
+
+.card-footer {
+  background-color: #fff; /* Optional: Set background color */
+}
+.sidebar .nav.sub-menu {
+ 
+  background: white !important;
+
+ 
+}
+.sidebar .nav.sub-menu .nav-item .nav-link {
+  color: black !important;
+ 
+}
+.status-option {
+  cursor: pointer;
+}
+.active {
+  font-weight: bold;
+}
+.table-container {
+  display: none;
+}
+.table-container.active {
+  display: block;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items:center;
+}
