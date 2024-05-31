@@ -2,6 +2,6 @@
 @section('title', 'setting')
 @section('content')
 <div class="content-wrapper">
-    <h1>hiiiiii how are you</h1>
+    <h1>well come dipika</h1>
 </div>
 @endsection

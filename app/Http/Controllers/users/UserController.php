@@ -9,8 +9,6 @@ class UserController extends Controller
 {
     //
     public function index(){
-        return "hello from member";
-        // dd('ok');
-        //return view('settings.index',compact('roles'));
+        return view('users.index');
     }
 }
