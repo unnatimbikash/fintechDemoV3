@@ -1,1 +1,0 @@
-<a href="{{url('/login')}}">login page click</a>
