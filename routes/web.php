@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserModelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\settings\SettingController;
-
+use App\Http\Controllers\users\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +33,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/addrole',[SettingController::class,'addrole']);
     });
 
-    // Route::prefix('users')->groups(function(){
-    //     Route::get('/',[]);
-    // });
+    Route::prefix('member')->group(function(){
+        Route::get('/',[UserController::class,'index']);
+    });
 });
 
 
