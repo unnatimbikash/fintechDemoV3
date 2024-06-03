@@ -57,5 +57,5 @@ class UserModelController extends Controller
         return;
      }
 
-   
+
 }
