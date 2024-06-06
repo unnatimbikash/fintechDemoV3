@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('member')->group(function(){
         Route::get('/',[UserController::class,'index']);
+        Route::post('/store',[UserController::class,'store']);
     });
 });
 

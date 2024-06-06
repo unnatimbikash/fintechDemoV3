@@ -30777,3 +30777,9 @@ input:checked + .slider:before {
   display: flex;
   align-items:center;
 }
+
+.error{
+  color: darkred;
+  font-size: medium;
+  font-style: italic;
+}

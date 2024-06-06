@@ -485,30 +485,60 @@
                   </button>
                 </div>
                 <div class="modal-body ">
-                  <form>
+                  <form method="post" action="{{url('/member/store')}}"> 
+                    @csrf
+                    <!-- @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div >{{$error}}</div>
+                        @endforeach
+                    @endif -->
                     <div class="form-group ">
                       <label for="userRole">User Type</label>
-                      <select class="form-control" id="userRole">
-                        <option>White Label</option>
-                        <option>Retailer</option>
-                        <option>API Partner</option>
+                      <select class="form-control" id="userRole" name="roleid" value="{{old('roleid')?old('roleid'):''}}">
+                          <option value=""> -- Select Role -- </option>
+                        @foreach($roles as $role)
+                          <option value="{{$role->id}}" {{(old('roleid')==$role->id?'selected':'')}}>{{$role->name}}</option>
+                        @endforeach
                       </select>
+                      @if($errors->has('roleid'))
+                        <span class="error">{{ $errors->first('roleid') }}</span>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <label for="userName">User Name</label>
-                      <input type="text" class="form-control" id="userName" placeholder="Enter user name">
+                      <label for="name">User Name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Enter user name" value="{{old('name')}}">
+                      @if($errors->has('name'))
+                        <span class="error">{{ $errors->first('name') }}</span>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <label for="userEmail">Email address</label>
-                      <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{old('email')}}">
+                      @if($errors->has('email'))
+                        <span class="error">{{ $errors->first('email') }}</span>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <label for="userNumber">Mobile Number</label>
-                      <input type="text" class="form-control" id="userName" placeholder="Enter Mobile name">
+                      <label for="mobile">Mobile Number</label>
+                      <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile name" value="{{old('mobile')}}">
+                      @if($errors->has('mobile'))
+                        <span class="error">{{ $errors->first('mobile') }}</span>
+                      @enderror
                     </div>
                     <div class="form-group">
-                      <label for="userPassword">Password</label>
-                      <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Password" >
+                      @if($errors->has('password'))
+                        <span class="error">{{ $errors->first('password') }}</span>
+                      @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <label for="conformpassword">Confirm Password</label>
+                      <input type="password" class="form-control" id="conformpassword" name="conformpassword" placeholder="Conform Password">
+                      @if($errors->has('conformpassword'))
+                        <span class="error">{{ $errors->first('conformpassword') }}</span>
+                      @enderror
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
@@ -559,5 +589,4 @@
       document.getElementById(formId).style.display = 'block';
     }
 
-  </script>
-
+</script>

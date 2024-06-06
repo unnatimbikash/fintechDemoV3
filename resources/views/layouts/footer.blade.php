@@ -37,5 +37,33 @@
     <!-- Custom js for this page-->
     <script src="../js/dashboard.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/error.js"></script>
     <script src="../js/Chart.roundedBarCharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- toastfire mesage -->
+    @if(Session::has('success'))
+      <script>
+          var successMessage = @json(session('success'));
+      </script>
+    @endif
+    @if(Session::has('error'))
+      <script>
+          var errorMessage = @json(session('error'));
+      </script>
+    @endif
+    @if(Session::has('warning'))
+      <script>
+          var warningMessage = @json(session('warning'));
+      </script>
+    @endif
+    @if(Session::has('info'))
+      <script>
+          var infoMessage = @json(session('info'));
+      </script>
+    @endif
+    @if($errors->any())
+    <script>
+        var allerrormessage = @json($errors->all());
+    </script>
+    @endif

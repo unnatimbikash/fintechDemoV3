@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class UserModel extends Model
 {
@@ -29,4 +30,5 @@ class UserModel extends Model
       }
       return ['agentcode' => $email, 'password'=>$password,'status'=>'active'];
   }
+
 }
