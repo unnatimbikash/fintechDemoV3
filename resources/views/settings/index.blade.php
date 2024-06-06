@@ -1,52 +1,39 @@
 @extends('layouts.layout')
 @section('title', 'setting')
 
-<style>
-    .more-options {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        cursor: pointer;
-    }
-
-    .card-container {
-        position: relative;
-    }
-
-</style>
 @section('content')
                 <div class="content-wrapper">
                     <div class="row">
                         <div class="col-md-2 grid-margin stretch-card">
                             <div class="card card-container p-3">
                                 <ul class="list-group custom-list-group">
-                                    <li class="list-group-item"><a href="#" onclick="showForm('icostoForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('icostoForm',this)"
                                             class="dropdown-item">ICO/STO</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('websiteForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('websiteForm',this)"
                                             class="dropdown-item">Website</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('referralForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('referralForm',this)"
                                             class="dropdown-item">Referral</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('mailingForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('mailingForm',this)"
                                             class="dropdown-item">Mailing</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('smsForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('smsForm',this)"
                                             class="dropdown-item">SMS</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('paymentForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('paymentForm',this)"
                                             class="dropdown-item">Payment Method</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('managepageForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('managepageForm',this)"
                                             class="dropdown-item">Manage Page</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('applicationapiForm')"
+                                    <li class="list-group-item"><a href="#"
+                                            onclick="showForm('applicationapiForm',this)"
                                             class="dropdown-item">Application API</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('languageForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('languageForm',this)"
                                             class="dropdown-item">Language</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('comissionForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('comissionForm',this)"
                                             class="dropdown-item">Commission Slab</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('rolepermissiondiv')"
-                                            class="dropdown-item">Role & Permission</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('apiForm')"
+                                    <li class="list-group-item"><a href="#"onclick="showForm('rolepermissiondiv',this)" class="dropdown-item">Role & Permission</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForm('apiForm',this)"
                                             class="dropdown-item">API</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('retailerForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('retailerForm',this)"
                                             class="dropdown-item">Retailer</a></li>
-                                    <li class="list-group-item"><a href="#" onclick="showForm('systemstatusForm')"
+                                    <li class="list-group-item"><a href="#" onclick="showForm('systemstatusForm',this)"
                                             class="dropdown-item">System Status</a></li>
                                 </ul>
                             </div>
@@ -657,10 +644,10 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach($roles as $role)
-                                                            <tr> 
-                                                                <td>{{$role->name}}</td>  
-                                                                <td>{{$role->slug}}</td>  
-                                                                <td>{{date('Y-m-d H:i a', strtotime($role->updated_at))}}</td>    
+                                                            <tr>
+                                                                <td>{{$role->name}}</td>
+                                                                <td>{{$role->slug}}</td>
+                                                                <td>{{date('Y-m-d H:i a', strtotime($role->updated_at))}}</td>
                                                                 <td>
                                                                     <div class="dropdown">
                                                                         <i class="fa-solid fa-ellipsis"
@@ -1091,7 +1078,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">API List</h4>
-                                           
+
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
@@ -1176,7 +1163,7 @@
         </div>
     </div>
 
-    
+
                 <!-- Add more form containers here for other options -->
             </div>
         </div>
@@ -1184,48 +1171,6 @@
     </div>
 </div>
 
-        
+
 @endsection
-<script>
-    function showForm(formId) {
-        var forms = document.querySelectorAll('.form-container');
-        forms.forEach(function (form) {
-            form.style.display = 'none';
-        });
-        document.getElementById(formId).style.display = 'block';
-    }
-</script>
-<!-- toggler switch js -->
-<script>
-    function toggleReferralSystem() {
-        var checkBox = document.getElementById("referralToggle");
-        var statusText = document.getElementById("referralStatus");
-        var detailsForm = document.getElementById("referralDetailsForm");
 
-        if (checkBox.checked == true) {
-            statusText.innerHTML = "Enabled";
-            detailsForm.style.display = "block";
-        } else {
-            statusText.innerHTML = "Disabled";
-            detailsForm.style.display = "none";
-        }
-    }
-</script>
-<!-- js for view option in api  -->
-<script>
-
-$(document).ready(function() {
-    $('.view-icon').on('click', function() {
-        var $row = $(this).closest('tr');
-        var profile = $row.find('td:nth-child(1)').text();
-        var vatNo = $row.find('td:nth-child(2)').text();
-        var created = $row.find('td:nth-child(3)').text();
-        var status = $row.find('td:nth-child(4)').text();
-
-        $('#viewModal #profile').val(profile);
-        $('#viewModal #vatNo').val(vatNo);
-        $('#viewModal #created').val(created);
-        $('#viewModal #status').val(status);
-    });
-});
-</script>

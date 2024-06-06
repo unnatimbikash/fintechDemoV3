@@ -70,6 +70,23 @@
         </li>
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face28.jpg" alt="profile" style="width: 30px; height: 30px;" />
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profileModal" onclick="showSection('myProfileContent', this)">
+                <i class="fa-solid fa-user text-primary"></i>  My Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fa-solid fa-chart-line text-primary"></i> Activity
+              </a>
+              <a class="dropdown-item" href="#">
+                  <i class="ti-power-off text-primary"></i>
+                  Logout
+              </a>
+          </div>
+      </li>
+        <!-- <li class="nav-item nav-profile dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
             <img src="images/faces/face28.jpg" alt="profile"/>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -86,7 +103,7 @@
               Logout
             </a>
           </div>
-        </li>
+        </li> -->
         <li class="nav-item nav-settings d-none d-lg-flex">
           <a class="nav-link" href="#">
             <i class="icon-ellipsis"></i>
@@ -97,4 +114,5 @@
         <span class="icon-menu"></span>
       </button>
     </div>
-</nav>
+  </nav>
+

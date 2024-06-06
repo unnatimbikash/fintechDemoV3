@@ -19059,7 +19059,7 @@ a.text-dark:hover, a.text-dark:focus {
   .table, .jsgrid .jsgrid-table {
     border-collapse: collapse !important;
   }
-  
+
   .table td,
   .jsgrid .jsgrid-table td, .table th, .jsgrid .jsgrid-table th {
     background-color: #ffffff !important;
@@ -30595,185 +30595,289 @@ div.tagsinput span.tag a {
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
 
 .percentage-circle {
-  width: 30px;
-  height: 30px;
-  background-color: #8b8ae6;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 10px;
-}
+    width: 30px;
+    height: 30px;
+    background-color: #8b8ae6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+  }
 
-.ms-3 {
-  margin-left: 10px;
-}
+  .ms-3 {
+    margin-left: 10px;
+  }
 
-.mb-0 {
-  margin-bottom: 0;
-}
-
-
-
-.view-button {
-  background-color: transparent !important;
-  border: none !important;
-  color: white; /* Adjust color to match the primary color */
-  padding: 0; /* Remove padding if any */
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.mt-3 {
-  margin-top: 1rem;
-}
-.toggle-buttons .btn {
-  padding: 5px 10px;
-  color: white;
-}
-
-.modal .modal-dialog .modal-content .modal-header {
-  padding: 15px 29px !important;
-}
-.modal .modal-dialog .modal-content .modal-body {
-  padding: 10px 26px !important;
-}
-.form-group {
-  margin-bottom: 0.5rem !important;
-}
-.form-check-input {
-   
-    margin-left: 0.75rem !important;
-}
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 0px !important;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-   
-.accordion {
-  display: block;
-  width: 100%;
-  padding: 0.45rem 0.35rem !important;}
-  
-.list-group-item {
-  position: relative;
-  display: block;
-  padding: 0rem 0rem !important;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-}
+  .mb-0 {
+    margin-bottom: 0;
+  }
 
 
-/* enable disable switch */
 
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
+  .view-button {
+    background-color: transparent !important;
+    border: none !important;
+    color: white; /* Adjust color to match the primary color */
+    padding: 0; /* Remove padding if any */
+  }
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+  .d-flex {
+    display: flex;
+  }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
-}
+  .justify-content-between {
+    justify-content: space-between;
+  }
 
-/* Slider before state */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
+  .align-items-center {
+    align-items: center;
+  }
 
-/* Checked state */
-input:checked + .slider {
-  background-color: #2196F3;
-}
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  .toggle-buttons .btn {
+    padding: 5px 10px;
+    color: white;
+  }
 
-/* Checked before state */
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
+  .modal .modal-dialog .modal-content .modal-header {
+    padding: 15px 29px !important;
+  }
+  .modal .modal-dialog .modal-content .modal-body {
+    padding: 10px 26px !important;
+  }
+  .form-group {
+    margin-bottom: 0.5rem !important;
+  }
+  .form-check-input {
 
-/* Custom CSS to remove borders from list items */
-.custom-list-group .list-group-item {
-  border: none;
-  cursor: pointer; /* Add pointer cursor on hover */
-}
+      margin-left: 0.75rem !important;
+  }
+  .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 0px !important;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
-.custom-list-group .list-group-item:hover {
-  background-color: #f0f0f0; /* Add hover effect */
-}
 
-.pagination-controls {
-  display: flex;
-  align-items: center;
-}
+  .accordion {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0.35rem !important;}
 
-.card-footer {
-  background-color: #fff; /* Optional: Set background color */
-}
-.sidebar .nav.sub-menu {
- 
-  background: white !important;
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0rem 0rem !important;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+  }
 
- 
-}
-.sidebar .nav.sub-menu .nav-item .nav-link {
-  color: black !important;
- 
-}
-.status-option {
-  cursor: pointer;
-}
-.active {
-  font-weight: bold;
-}
-.table-container {
-  display: none;
-}
-.table-container.active {
-  display: block;
-}
 
-.pagination-controls {
-  display: flex;
-  align-items:center;
-}
+  /* enable disable switch */
+
+  /* The switch - the box around the slider */
+
+  /* .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  } */
+  /* Hide default HTML checkbox */
+  /* .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  } */
+
+  /* The slider */
+  /* .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  } */
+
+  /* Slider before state */
+  /* .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  } */
+
+  /* Checked state */
+  /* input:checked + .slider {
+    background-color: #2196F3;
+  } */
+
+  /* Checked before state */
+  /* input:checked + .slider:before {
+    transform: translateX(26px);
+  } */
+
+  /* Custom CSS to remove borders from list items */
+  .custom-list-group .list-group-item {
+    border: none;
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .custom-list-group .list-group-item:hover {
+    background-color: #f0f0f0; /* Add hover effect */
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .card-footer {
+    background-color: #fff; /* Optional: Set background color */
+  }
+  .sidebar .nav.sub-menu {
+
+    background: white !important;
+
+
+  }
+  .sidebar .nav.sub-menu .nav-item .nav-link {
+    color: #4B49AC !important;
+
+  }
+  .status-option {
+    cursor: pointer;
+  }
+  .active {
+    font-weight: bold;
+  }
+  .table-container {
+    display: none;
+  }
+  .table-container.active {
+    display: block;
+  }
+
+   .more-options {
+              position: absolute;
+              right: 10px;
+              top: 10px;
+              cursor: pointer;
+          }
+
+          .card-container {
+              position: relative;
+          }
+  .active-item {
+    background-color: #cacaf1 !important;
+    color: #16181b;
+    border-radius: 15px;
+  }
+  .custom-list-group.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color:#cacaf1;
+  }
+  .form-check-inline {
+    margin-right: 10px;}
+
+  #systemstatusForm .list-group-item {
+    border: none !important;
+    /* border: 0.2px solid rgba(0, 0, 0, 0.125); */
+  }
+
+
+  .nav-profile.nav-link.active {
+    background-color: none!important;
+    color: white !important;
+  }
+  #securityContent.custom-control{margin-bottom: 3rem;
+
+  }
+
+
+  /* 4 */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+  }
+
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 6px;
+    bottom: 6px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(18px);
+  }
+  .modal-header {
+
+   border-bottom: none !important;}
+   #systemstatusForm  th
+   {font-style: bold;
+
+   }
+
+
+   /* 5 */
+   .table-container {
+    display: none;
+  }
+  .table-container.active {
+    display: block;
+  }
+  .filter-section {
+    display: none;
+    margin-bottom: 1rem;
+  }
+
+  .border i{
+    font-size: 22px;
+  }
