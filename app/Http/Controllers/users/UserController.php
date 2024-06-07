@@ -18,7 +18,6 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        dd($this->getIp());
         $validate=$request->validate([
             'roleid'=>'required|numeric',
             'name'=>'required|alpha',
@@ -36,6 +35,8 @@ class UserController extends Controller
         $user->password=Hash::make($request->conformpassword);
         $user->role_id=$request->roleid;
         $user->parent_id=Auth::user()->id;
+        $user->login=date("Y-m-d h:i:s");
+        $user->ip=IP($request);
         $user->latitude=Auth::user()->latitude;
         $user->longitude=Auth::user()->longitude;
         $user->save();

@@ -15,10 +15,10 @@ class UserModel extends Model
     // Define the primary key
     protected $primaryKey = 'id';
 
-  public static function updatelogs($userid,$longitude,$latitude){
-      date_default_timezone_set("Asia/Kolkata");
-      $data=self::where('id',$userid)->update(['lastlogin'=>date("Y-m-d h:i:s"),'latitude'=>$latitude,'longitude'=>$longitude]);
-      return true; 
+  public static function updatelogs($userid,$longitude,$latitude,$ip){
+        $user=self::find($userid);
+        $data=self::where('id',$userid)->update(['login'=>date("Y-m-d h:i:s"),'lastlogin'=>$user->login,'latitude'=>$latitude,'longitude'=>$longitude,'ip'=>$ip,'lastip'=>$user->ip,'lastlatitude'=>$user->latitude,'lastlongitude'=>$user->longitude]);
+        return true; 
   }
 
   public static function credential($email,$password){
