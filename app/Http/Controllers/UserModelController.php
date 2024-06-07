@@ -56,6 +56,4 @@ class UserModelController extends Controller
         Cookie::queue('remember', 'true');
         return;
      }
-
-
 }

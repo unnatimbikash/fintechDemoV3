@@ -14,7 +14,12 @@ class UserController extends Controller
     //
     public function index(){
         $roles=Role::orderBy('id','ASC')->where('name','!=','Admin')->get();
-        return view('users.index',compact('roles'));
+        $users=User::get();
+        foreach($users as $user){
+            $user->role=Role::select('name')->where('id',$user->role_id)->first()->name;
+        }
+        // dd($users);
+        return view('users.index',compact('roles','users'));
     }
 
     public function store(Request $request){
@@ -27,7 +32,7 @@ class UserController extends Controller
             'password'=>'required|string|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*?&#]/',
             'conformpassword'=>'required_with:password|same:password',
         ]);
-        
+
         $curYear = date('Y');
         $user=new User();
         $user->name=$request->name;
@@ -58,5 +63,15 @@ class UserController extends Controller
         }
         return null; // it will return the server IP if the client IP is not found using this method.
     }
-    
+   public function resetpassword(Request $request){
+    dd($request);
+    if(User::where('id',$request->id)->where('password',Hash::make($request->previouspassword))->first()){
+      return response()->json(['error'=>'check your previous password'],500);
+    }else if($request->password===$request->confirmpassword){
+        return response()->json(['error'=>'password does not match'],500);
+    }else{
+        User::where('id',$request->id)->update(['password'=>$request->password]);
+        return response()->json(['messasge'=>'updated successfully'],200);
+    }
+   }
 }
