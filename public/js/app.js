@@ -27,7 +27,7 @@ $(document).ready(function () {
                                 timerProgressBar: true
                             }).then(() => {
                                 window.location.href = domain+'/dashboard';
-                            });       
+                            });
                         }else{
                             Swal.fire({
                                 title: 'Error!',
@@ -35,7 +35,7 @@ $(document).ready(function () {
                                 icon: 'error',
                                 timer: 2000,
                             });
-                        }   
+                        }
                     },
                     error: function (data) {
                         Swal.fire({
@@ -86,8 +86,8 @@ $(document).ready(function () {
                         showConfirmButton: false,
                         timer: 2000,
                         timerProgressBar: true
-                    });  
-                    $("#rolecard").load(location.href + " #role_card_body");   
+                    });
+                    $("#rolecard").load(location.href + " #role_card_body");
                 }else{
                     Swal.fire({
                         title: 'Error!',
@@ -95,7 +95,7 @@ $(document).ready(function () {
                         icon: 'error',
                         timer: 2000,
                     });
-                }   
+                }
             },
             error: function (data){
                 $('#role_submit').removeAttr("disabled");
@@ -108,5 +108,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    function viewdetails(data){
+        console.log(data);
+    }
 });
