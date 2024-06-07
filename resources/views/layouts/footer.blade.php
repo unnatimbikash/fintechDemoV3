@@ -33,8 +33,10 @@
     <script src="../js/template.js"></script>
     <script src="../js/settings.js"></script>
     <script src="../js/todolist.js"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page-->
+    <script src="../js/setting.js"></script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/error.js"></script>
