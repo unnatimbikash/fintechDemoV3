@@ -23,7 +23,6 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        dd($this->getIp());
         $validate=$request->validate([
             'roleid'=>'required|numeric',
             'name'=>'required|alpha',
@@ -41,6 +40,8 @@ class UserController extends Controller
         $user->password=Hash::make($request->conformpassword);
         $user->role_id=$request->roleid;
         $user->parent_id=Auth::user()->id;
+        $user->login=date("Y-m-d h:i:s");
+        $user->ip=IP($request);
         $user->latitude=Auth::user()->latitude;
         $user->longitude=Auth::user()->longitude;
         $user->save();
@@ -50,19 +51,6 @@ class UserController extends Controller
         return back()->with('success',__('messages.usersave'));
     }
 
-    public function getIp(){
-        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
-            if (array_key_exists($key, $_SERVER) === true){
-                foreach (explode(',', $_SERVER[$key]) as $ip){
-                    $ip = trim($ip); // just to be safe
-                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
-                        return $ip;
-                    }
-                }
-            }
-        }
-        return null; // it will return the server IP if the client IP is not found using this method.
-    }
    public function resetpassword(Request $request){
     if(!User::where('id',$request->id)->where('password',Hash::make($request->previouspassword))->first()){
       return response()->json(['error'=>'check your previous password'],500);

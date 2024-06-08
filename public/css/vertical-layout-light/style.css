@@ -30742,7 +30742,6 @@ div.tagsinput span.tag a {
     background-color: #f0f0f0; /* Add hover effect */
   }
 
-<<<<<<< HEAD
 .pagination-controls {
   display: flex;
   align-items:center;
@@ -30753,7 +30752,6 @@ div.tagsinput span.tag a {
   font-size: medium;
   font-style: italic;
 }
-=======
   .pagination-controls {
     display: flex;
     align-items: center;
@@ -30893,4 +30891,3 @@ div.tagsinput span.tag a {
   .border i{
     font-size: 22px;
   }
->>>>>>> 502a6ca957a74a4d3e99ec599017ebcc76e0d38c

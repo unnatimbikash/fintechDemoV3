@@ -36,12 +36,12 @@
 
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="{{asset('js/setting.js')}}"></script>
-    <script src="{{asset('js/dashboard.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/user-edit.js')}}"></script>
-    <script src="{{asset('js/error.js')}}"></script>
-    <script src="{{asset('js/Chart.roundedBarCharts.js')}}"></script>
+    <script src="../js/setting.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/public.js"></script>
+    <script src="../js/error.js"></script>
+    <script src="../js/Chart.roundedBarCharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
     <!-- toastfire mesage -->

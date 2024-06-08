@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Cookie;
 
-
 class UserModelController extends Controller
 {
     public function login(){
@@ -24,6 +23,7 @@ class UserModelController extends Controller
     }
 
     public function verifylogin(Request $request){
+       // dd(gethostbyname(gethostname()),$_SERVER['REMOTE_ADDR'],$request->ip());
         $validator=Validator::make($request->all(), [
             'email' => ['required'],
             'password' => ['required',
@@ -42,9 +42,10 @@ class UserModelController extends Controller
             $this->checkbox($request->email,$request->password);
         }
         $credentials=UserModel::credential($request->email,$request->password);
+        $ip=IP($request);
         if(Auth::attempt($credentials,$request->has('remember'))){
             $user=Auth::user();
-            UserModel::updatelogs($user->id,$request->longitude ,$request->latitude);
+            UserModel::updatelogs($user->id,$request->longitude ,$request->latitude,$ip);
             return response()->json(['success' => true,'msg' => 'Login successful!',]);
         }else{
             return response()->json(['success' => false, 'msg' => 'Invalid credentials.']);
