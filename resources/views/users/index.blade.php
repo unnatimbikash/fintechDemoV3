@@ -26,7 +26,6 @@
                             <i class="ti-file mr-3"></i>
                             <i class="ti-settings"></i>
                         </div>
-=======
 <div class="content-wrapper">
     <div class="col-lg-12 stretch-card">
         <div class="card">
@@ -543,7 +542,6 @@
                           class="fa-regular fa-circle-question mr-2 text-warning"></i><span><label
                             class="badge">Kyc</label></span>
                       </div>
->>>>>>> d12f29c2bc88b522ad42bdaf1ecbc6fcc61d9e42
                     </div>
                     <div class="table-responsive pt-3">
                         <div id="investorTable" class="table-container active">
@@ -1116,13 +1114,11 @@
                         @enderror
                 </div>
 
-<<<<<<< HEAD
                 <div class="form-group">
                     <label for="conformpassword">Confirm Password</label>
                     <input type="password" class="form-control" id="conformpassword"
                         name="conformpassword" placeholder="Conform Password">
                     @if ($errors->has('conformpassword'))
-=======
             <!-- activities modal -->
             <div class="modal fade" id="sendEmailModal" tabindex="-1" role="dialog"
               aria-labelledby="sendEmailModalLabel" aria-hidden="true">
@@ -1208,7 +1204,6 @@
                       <label for="conformpassword">Confirm Password</label>
                       <input type="password" class="form-control" id="conformpassword" name="conformpassword" placeholder="Conform Password">
                       @if($errors->has('conformpassword'))
->>>>>>> d12f29c2bc88b522ad42bdaf1ecbc6fcc61d9e42
                         <span class="error">{{ $errors->first('conformpassword') }}</span>
                     @enderror
             </div>
@@ -1231,7 +1226,6 @@
 </div>
 </div>
 @endsection
-<<<<<<< HEAD
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const statusOptions = document.querySelectorAll('.status-option');
@@ -1305,5 +1299,3 @@
         })
     }
 </script>
-=======
->>>>>>> d12f29c2bc88b522ad42bdaf1ecbc6fcc61d9e42
