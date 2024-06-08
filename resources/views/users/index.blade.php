@@ -14,18 +14,195 @@
             </div>
             </p>
             <div class="row border">
-              <div class="col-md-6 p-1 d-flex align-items-center">
-                <span class="mr-3 status-option active" id="investor" data-status="investor">Investor/User</span>
-                <span class="mr-3 status-option" id="admin" data-status="admin">Admin Account</span>
-                <span class="mr-3 status-option" id="all" data-status="all">All</span>
+                <div class="col-md-6 p-1 d-flex align-items-center">
+                  <span class="mr-3 status-option active" id="investor" data-status="investor">Investor/User</span>
+                  <span class="mr-3 status-option" id="admin" data-status="admin">Admin Account</span>
+                  <span class="mr-3 status-option" id="all" data-status="all">All</span>
+                </div>
+                <!-- <div class="col-md-6 d-flex justify-content-end align-items-center p-3">
+                  <input type="text" class="form-control mr-2" placeholder=" Quick Search...">
+                  <i class="ti-filter mr-3"></i>
+                  <i class="ti-file mr-3"></i>
+                  <i class="ti-settings"></i>
+                </div> -->
+                <div class="col-md-6 d-flex justify-content-end align-items-center p-3">
+                  <input type="text" class="form-control mr-2" placeholder=" Quick Search by TRNX ID...">
+                  <i id="filter-icon" class="fa-solid fa-filter mr-3 text-primary" style="cursor: pointer;"></i>
+                  <div class="dropdown">
+                    <i class="fa-solid fa-file mr-3 text-primary" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false" style="cursor: pointer;"></i>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#">Entire</a>
+                      <a class="dropdown-item" href="#">Minimal </a>
+                      <a class="dropdown-item" href="#">Compact</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <i class="fa-solid fa-gear text-primary" id="settingsDropdown" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false" style="cursor: pointer;"></i>
+                    <div class="dropdown-menu dropdown-menu-right p-1" aria-labelledby="settingsDropdown">
+                      <h6 class="dropdown-header">Show</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="showOptions" id="show10" value="10">
+                        <label class="form-check-label" for="show10">10</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="showOptions" id="show20" value="20">
+                        <label class="form-check-label" for="show20">20</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="showOptions" id="show30" value="30">
+                        <label class="form-check-label" for="show30">30</label>
+                      </div>
+
+                      <h6 class="dropdown-header">Order By</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="orderByOptions" id="orderByUserId"
+                          value="UserId">
+                        <label class="form-check-label" for="orderByUserId">UserId</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="orderByOptions" id="orderByName"
+                          value="Name">
+                        <label class="form-check-label" for="orderByName">Name</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="orderByOptions" id="orderByToken"
+                          value="Token">
+                        <label class="form-check-label" for="orderByToken">Token</label>
+                      </div>
+
+                      <h6 class="dropdown-header">Order</h6>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="orderOptions" id="orderAsc" value="ASC">
+                        <label class="form-check-label" for="orderAsc">ASC</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="orderOptions" id="orderDesc"
+                          value="DESC">
+                        <label class="form-check-label" for="orderDesc">DESC</label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <!-- <i class="ti-file mr-3"></i> -->
+
+                  <!-- <i class="ti-settings"></i> -->
+                </div>
+                <div class="filter-section col-md-12">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="filterId">Search by </label>
+
+                      <div class="input-group">
+                        <input type="text" id="filterId" class="form-control" placeholder="ID">
+                        <select class="custom-select" id="inputGroupSelect04"
+                          aria-label="Example select with button addon">
+                          <!-- <option selected>Choose...</option> -->
+                          <option value="name">Name</option>
+                          <option value="email">Email</option>
+                          <option value="id">Id</option>
+                          <option value="wallet">Wallet</option>
+                        </select>
+
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="filteraccountstatus">Account Status</label>
+                      <select id="filteraccountstatus" class="form-control">
+                        <option value="all">All</option>
+                        <option value="activated">Activated</option>
+                        <option value="suspended">Suspended</option>
+
+
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="filterregmethod">Reg Method</label>
+                      <select id="filterregmethod" class="form-control">
+                        <option value="all">All</option>
+                        <option value="internal">Internal</option>
+                        <option value="email">Email</option>
+                        <option value="google">Google</option>
+                        <option value="facebook">Facebook</option>
+                        <!-- Add more currencies as needed -->
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="filterverifiedstatus">Verified Status</label>
+                      <select id="filterverifiedstatus" class="form-control">
+                        <option value="all">All</option>
+
+                        <option value="email">Email</option>
+                        <option value="kyc">KYC</option>
+                        <option value="both">Both</option>
+                        <!-- Add more currencies as needed -->
+                      </select>
+                    </div>
+
+
+
+
+
+
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-md-3">
+                      <label for="filtertokenbalance">Token Balance</label>
+                      <select id="filtertokenbalance" class="form-control">
+                        <option value="anyamount">Any Amount</option>
+
+                        <option value="hastoken">Has Token</option>
+                        <option value="zerotoken">Zero Token</option>
+                        <option value="both">Both</option>
+                        <!-- Add more currencies as needed -->
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="filterreferredby">Is Referred By</label>
+                      <select id="filtertokenbalance" class="form-control">
+                        <option value="any">Any</option>
+
+                        <option value="yes">Yes</option>
+                        <option value="no"> No</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <!-- <label for="hasWallet">Has Wallet</label> -->
+
+
+
+                      <div class="form-check mt-5">
+                        <input class="form-check-input" type="checkbox" id="hasWallet"
+                          style="transform: scale(1.5); ">
+                        <label class="form-check-label " for="hasWallet">Has Wallet</label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <!-- <label for="includeAdmin">Including Admin</label> -->
+                      <div class="form-check mt-5">
+                        <input class="form-check-input" type="checkbox" id="includeAdmin"
+                          style="transform: scale(1.5);">
+                        <label class="form-check-label" for="includeAdmin">Including Admin</label>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-2 text-right">
+                      <button class="btn btn-primary mt-4">Search</button>
+                    </div>
+                  </div>
+                  <!-- <div class="row mt-2">
+
+
+                    </div> -->
+                </div>
               </div>
-              <div class="col-md-6 d-flex justify-content-end align-items-center p-3">
-                <input type="text" class="form-control mr-2" placeholder=" Quick Search...">
-                <i class="ti-filter mr-3"></i>
-                <i class="ti-file mr-3"></i>
-                <i class="ti-settings"></i>
-              </div>
-            </div>
             <div class="table-responsive pt-3">
               <div id="investorTable" class="table-container active">
                 <!-- Add the respective form for investor here -->
@@ -485,7 +662,7 @@
                   </button>
                 </div>
                 <div class="modal-body ">
-                  <form method="post" action="{{url('/member/store')}}"> 
+                  <form method="post" action="{{url('/member/store')}}">
                     @csrf
                     <!-- @if ($errors->any())
                         @foreach ($errors->all() as $error)
@@ -559,34 +736,3 @@
       </div>
 </div>
 @endsection
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const statusOptions = document.querySelectorAll('.status-option');
-      const tableContainers = document.querySelectorAll('.table-container');
-
-      statusOptions.forEach(option => {
-        option.addEventListener('click', function () {
-          statusOptions.forEach(opt => opt.classList.remove('active'));
-          option.classList.add('active');
-
-          const status = option.getAttribute('data-status');
-          tableContainers.forEach(container => {
-            if (container.id.includes(status)) {
-              container.classList.add('active');
-            } else {
-              container.classList.remove('active');
-            }
-          });
-        });
-      });
-    });
-
-    function showForm(formId) {
-      var forms = document.querySelectorAll('.form-container');
-      forms.forEach(function (form) {
-        form.style.display = 'none';
-      });
-      document.getElementById(formId).style.display = 'block';
-    }
-
-</script>
