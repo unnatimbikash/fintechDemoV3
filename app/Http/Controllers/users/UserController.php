@@ -62,6 +62,7 @@ class UserController extends Controller
     }
    }
    public function edit($id){
+    dd('bikashshshshshs');
      $user=User::where('id',$id)->first();
      return view('users.edit',compact('user'));
    }
