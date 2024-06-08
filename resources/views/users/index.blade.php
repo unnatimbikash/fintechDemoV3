@@ -77,16 +77,17 @@
                                                             data-target="#sendEmailModal"><i
                                                                 class="fa-solid fa-envelope"></i> <span class="mx-2">Send
                                                                 Email</span></a>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal"
-                                                            data-target="#activitiesModal"><i
-                                                                class="fa-solid fa-chart-line"></i> <span
-                                                                class="mx-2">Activities</span></a>
+                                                                @if($user->kyc=="pending")
+                                                                <a class="dropdown-item" href="{{url('member/editdetails')}}/{{$user->id}}" ><i
+                                                                    class="fa-solid fa-chart-line"></i> <span
+                                                                    class="mx-2">edit profile</span></a>
+                                                                @endif
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                                             data-target="#referralsModal"><i
                                                                 class="fa-solid fa-user-friends"></i> <span
                                                                 class="mx-2">Referrals</span></a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa-solid fa-key"></i>
-                                                            <span class="mx-2" onclick="resetpassword({{$key}})">Reset Pass</span></a>
+                                                            <span class="mx-2" onclick="resetpassword({{$user->id}})">Reset Pass</span></a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                                             data-target="#suspendModal"><i class="fa-solid fa-ban"></i>
                                                             <span class="mx-2">Suspend</span></a>
@@ -678,22 +679,50 @@
     }
     function resetformsubmit(e){
         e.preventDefault();
-        let passwordresetform=document.getElementById('passwordresetform');
-        const formdata= new FormData(passwordresetform);
-        $.ajax({
-            type:'post',
-            url:$('#passwordresetform').attr('action'),
-            data:{
-                '_token':formdata.get('_token'),
-                'id':$('#passwordid').val(),
-                'previouspassword':formdata.get('verifypassword'),
-                'password':formdata.get('password'),
-                'confirmpassword':formdata.get('confirmpassword'),
-            },success:(data)=>{
+            let passwordResetForm = document.getElementById('passwordresetform');
+            const formData = new FormData(passwordResetForm);
 
-            },error:(error)=>{
+            // Get form data including CSRF token
+            const data = {
+                '_token': formData.get('_token'),
+                'id': formData.get('id'),
+                'previouspassword': formData.get('verifypassword'),
+                'password': formData.get('password'),
+                'confirmpassword': formData.get('confirmpassword'),
+            };
 
-            }
-        })
-    }
+            Swal.fire({
+                title: 'Do you really want to change your password?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, change it!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: $('#passwordresetform').attr('action'),
+                        data: data,
+                        success: (response) => {
+                            Swal.fire({
+                                title: 'Success',
+                                text: response.message,
+                                icon: 'success',
+                                timer: 2000,
+                                timerProgressBar: true
+                            });
+                        },
+                        error: (error) => {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: error.responseJSON.error,
+                                icon: 'error',
+                                timer: 2000,
+                                timerProgressBar: true
+                            });
+                        }
+                    });
+                }
+            });
+        }
 </script>
