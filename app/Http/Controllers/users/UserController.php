@@ -65,14 +65,17 @@ class UserController extends Controller
         return null; // it will return the server IP if the client IP is not found using this method.
     }
    public function resetpassword(Request $request){
-    dd($request);
-    if(User::where('id',$request->id)->where('password',Hash::make($request->previouspassword))->first()){
+    if(!User::where('id',$request->id)->where('password',Hash::make($request->previouspassword))->first()){
       return response()->json(['error'=>'check your previous password'],500);
     }else if($request->password===$request->confirmpassword){
-        return response()->json(['error'=>'password does not match'],500);
-    }else{
         User::where('id',$request->id)->update(['password'=>$request->password]);
         return response()->json(['messasge'=>'updated successfully'],200);
+    }else{
+        return response()->json(['error'=>'password does not match'],500);
     }
+   }
+   public function edit($id){
+     $user=User::where('id',$id)->first();
+     return view('users.edit',compact('user'));
    }
 }
