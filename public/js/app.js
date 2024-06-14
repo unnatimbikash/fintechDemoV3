@@ -64,21 +64,19 @@ $(document).ready(function () {
             });
         }
     });
-
     // add role in
-    $('#addrole_form').submit(function (e){
-        $('#role_submit').attr("disabled", 'disabled');
+    $('#permissionForm').submit(function (e){
         e.preventDefault();
         var formdata=$(this).serialize();
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
             data: formdata,
+            cache:false,
             success: function (data) {
-                $('#role_submit').removeAttr("disabled");
-                if(data.success==true){
-                    $('#addrole').modal('hide');
-                    $('#addrole_form').trigger('reset');
+                // var form = $('#permissionForm');
+                // form[0].reset();
+                if(data.status=='success'){
                     Swal.fire({
                         title: 'Success!',
                         text: data.msg,
@@ -87,18 +85,9 @@ $(document).ready(function () {
                         timer: 2000,
                         timerProgressBar: true
                     });
-                    $("#rolecard").load(location.href + " #role_card_body");
-                }else{
-                    Swal.fire({
-                        title: 'Error!',
-                        text: data.msg,
-                        icon: 'error',
-                        timer: 2000,
-                    });
                 }
             },
             error: function (data){
-                $('#role_submit').removeAttr("disabled");
                 Swal.fire({
                     title: 'Error!',
                     text: 'Something Went Wrong',
@@ -108,7 +97,5 @@ $(document).ready(function () {
             }
         });
     });
-    function viewdetails(data){
-        console.log(data);
-    }
+    
 });

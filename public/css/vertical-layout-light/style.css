@@ -30891,3 +30891,7 @@ div.tagsinput span.tag a {
   .border i{
     font-size: 22px;
   }
+
+  .table-responsive{
+    min-height: 320px !important;
+  }

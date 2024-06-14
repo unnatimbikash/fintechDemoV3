@@ -5,7 +5,8 @@ use App\Http\Controllers\UserModelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\settings\SettingController;
 use App\Http\Controllers\users\UserController;
-
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +29,15 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('dashboard');
     });
 
+    Route::resource('role', RoleController::class);
+    Route::POST('/assignpermissionrole',[RoleController::class,'assignroletopermission']);
+    Route::POST('/getrolepermission',[RoleController::class,'getrollpermission']);
+    Route::resource('permission',PermissionController::class);
+
     Route::prefix('setting')->group(function (){
         Route::get('/',[SettingController::class,'index']);
-        Route::post('/addrole',[SettingController::class,'addrole']);
     });
-
+    
     Route::prefix('member')->group(function(){
         Route::get('/',[UserController::class,'index']);
         Route::post('/store',[UserController::class,'store']);

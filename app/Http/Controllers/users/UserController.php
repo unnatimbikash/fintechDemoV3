@@ -4,21 +4,20 @@ namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
-use Auth;
+
 
 class UserController extends Controller
 {
-    //
     public function index(){
         $roles=Role::orderBy('id','ASC')->where('name','!=','Admin')->get();
         $users=User::get();
         foreach($users as $user){
             $user->role=Role::select('name')->where('id',$user->role_id)->first()->name;
         }
-        // dd($users);
         return view('users.index',compact('roles','users'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class UserModel extends Model
@@ -29,6 +30,11 @@ class UserModel extends Model
             return ['email' =>$email, 'password'=>$password,'status'=>'active'];
       }
       return ['agentcode' => $email, 'password'=>$password,'status'=>'active'];
+  }
+
+  public static function rollpermission($id){
+      $data=DB::table('role_has_permissions')->where('role_id',$id)->select('permission_id')->get();
+      return $data;
   }
 
 }
