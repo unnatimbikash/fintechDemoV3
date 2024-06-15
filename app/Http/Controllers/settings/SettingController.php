@@ -12,4 +12,8 @@ class SettingController extends Controller
         return view('settings.index');
     }
 
+    public function add(){
+        
+    }
+
 }
