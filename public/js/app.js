@@ -64,21 +64,19 @@ $(document).ready(function () {
             });
         }
     });
-
     // add role in
-    $('#addrole_form').submit(function (e){
-        $('#role_submit').attr("disabled", 'disabled');
+    $('#permissionForm').submit(function (e){
         e.preventDefault();
         var formdata=$(this).serialize();
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
             data: formdata,
+            cache:false,
             success: function (data) {
-                $('#role_submit').removeAttr("disabled");
-                if(data.success==true){
-                    $('#addrole').modal('hide');
-                    $('#addrole_form').trigger('reset');
+                // var form = $('#permissionForm');
+                // form[0].reset();
+                if(data.status=='success'){
                     Swal.fire({
                         title: 'Success!',
                         text: data.msg,
@@ -87,28 +85,29 @@ $(document).ready(function () {
                         timer: 2000,
                         timerProgressBar: true
                     });
-                    $("#rolecard").load(location.href + " #role_card_body");
-                }else{
+                    $('#permissionModalCenter').modal('hide');
+                }
+            },
+            error: function(xhr, status, error) {
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    //toastr.error(xhr.responseJSON.message);
                     Swal.fire({
                         title: 'Error!',
-                        text: data.msg,
+                        text: xhr.responseJSON.message,
+                        icon: 'error',
+                        timer: 2000,
+                    });
+                } else {
+                    // toastr.error('An unexpected error occurred.');
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Something went Wrong',
                         icon: 'error',
                         timer: 2000,
                     });
                 }
-            },
-            error: function (data){
-                $('#role_submit').removeAttr("disabled");
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Something Went Wrong',
-                    icon: 'error',
-                    timer: 2000,
-                });
             }
         });
     });
-    function viewdetails(data){
-        console.log(data);
-    }
+    
 });

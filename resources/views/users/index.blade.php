@@ -7,25 +7,14 @@
                 <div class="card-body">
                     <h4 class="card-title"> User Lists</h4>
                     <p class="card-description">
+                    @can('adduser')
                     <div>
                         <button class="btn btn-info mt-1" data-toggle="modal" data-target="#addUserModal">
                             <i class="ti-plus mr-2 "></i> Add user
                         </button>
                     </div>
-                    </p>
-                    <div class="row border">
-                        {{-- <div class="col-md-6 p-1 d-flex align-items-center">
-                <span class="mr-3 status-option active" id="investor" data-status="investor">Investor/User</span>
-                <span class="mr-3 status-option" id="admin" data-status="admin">Admin Account</span>
-                <span class="mr-3 status-option" id="all" data-status="all">All</span>
-              </div> --}}
-                        <div class="col-md-6 d-flex justify-content-end align-items-center p-3">
-                            <input type="text" class="form-control mr-2" placeholder=" Quick Search...">
-                            <i class="ti-filter mr-3"></i>
-                            <i class="ti-file mr-3"></i>
-                            <i class="ti-settings"></i>
-                        </div>
-                    </div>
+                    @endcan
+                    </p>               
                     <div class="table-responsive pt-3">
                         <div id="investorTable" class="table-container active">
                             <!-- Add the respective form for investor here -->
@@ -34,9 +23,11 @@
                                 <table class="table table-hover">
                                     <thead class="text-uppercase">
                                         <tr>
+                                            <th>ID</th>
                                             <th>User</th>
                                             <th>Email</th>
-                                            <th>Balance(Rs)</th>
+                                            <th>Role</th>
+                                            <th>Balance (Rs)</th>
                                             <th>Verified Status</th>
                                             <th>Last Login</th>
                                             <th>Status</th>
@@ -44,10 +35,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $i=0;?>
                                         @foreach ($users as $key => $user)
                                             <tr>
+                                                <td>{{++$i}}</td>
                                                 <td>{{ $user->name}}<span><label class="badge badge-warning">{{$user->role}}</label></span></td>
                                                 <td>{{ $user->email }}</td>
+                                                <td>
+                                                    @if(!empty($user->getRoleNames()))
+                                                        @foreach($user->getRoleNames() as $rolename)
+                                                            @if($rolename=='Admin')
+                                                                <span class="badge badge-danger">{{$rolename}}</span>
+                                                            @elseif($rolename=='MasterDistributor')
+                                                                <span class="badge badge-success">{{$rolename}}</span>
+                                                            @else
+                                                                <span class="badge badge-secondary">{{$rolename}}</span>
+                                                            @endif
+                                                            
+                                                        @endforeach
+                                                    @endif
+                                                </td>
                                                 <td>{{ $user->mainwallet }}</td>
                                                 <td><i class="fa-solid fa-triangle-exclamation mr-2 text-danger"></i><span><label
                                                             class="badge ">Email</label></span><i
@@ -102,233 +109,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-                            </div>
-                        </div>
-                        <div id="adminTable" class="table-container">
-                            <!-- Add the respective form for admin here -->
-                            <div class="form-container" id="adminForm">
-                                <!-- Admin form content -->
-                                <table class="table table-hover">
-                                    <thead class="text-uppercase">
-                                        <tr>
-                                            <th>User</th>
-                                            <th>Email</th>
-                                            <th>Balance(Rs)</th>
-                                            <th>Verified Status</th>
-                                            <th>Last Login</th>
-                                            <th>Status</th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Jacob <span><label class="badge badge-warning">Admin</label></span></td>
-                                            <td>Photoshop@gmail.com</td>
-                                            <td>6543</td>
-                                            <td><i class="fa-solid fa-triangle-exclamation mr-2 text-danger"></i><span><label
-                                                        class="badge ">Email</label></span><i
-                                                    class="fa-regular fa-circle-question mr-2 text-warning"></i><span><label
-                                                        class="badge">Kyc</label></span></td>
-                                            <td>Not logged yet</td>
-                                            <td><label class="badge badge-success">Active</label></td>
-                                            <td class="dropdown">
-                                                <i class="fa-solid fa-ellipsis" id="dropdownMenuButton2"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                    aria-labelledby="dropdownMenuButton2">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#viewDetailsModal"><i
-                                                            class="fa-solid fa-info-circle"></i> <span class="mx-2">View
-                                                            Details</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#sendEmailModal"><i class="fa-solid fa-envelope"></i>
-                                                        <span class="mx-2">Send Email</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#activitiesModal"><i
-                                                            class="fa-solid fa-chart-line"></i> <span
-                                                            class="mx-2">Activities</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#referralsModal"><i
-                                                            class="fa-solid fa-user-friends"></i> <span
-                                                            class="mx-2">Referrals</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#resetPassModal"><i class="fa-solid fa-key"></i>
-                                                        <span class="mx-2">Reset Pass</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#suspendModal"><i class="fa-solid fa-ban"></i> <span
-                                                            class="mx-2">Suspend</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#verifyEmailModal"><i
-                                                            class="fa-solid fa-envelope-circle-check"></i>
-                                                        <span class="mx-2">Verify Email</span></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Jacob <span><label class="badge badge-warning">Admin</label></span></td>
-                                            <td>Photoshop@gmail.com</td>
-                                            <td>6543</td>
-                                            <td><i class="fa-regular fa-circle-check mr-2 text-success "></i><span><label
-                                                        class="badge ">Email</label></span><i
-                                                    class="fa-regular fa-circle-question mr-2 text-warning"></i><span><label
-                                                        class="badge">Kyc</label></span></td>
-                                            <td>24May,2024 11:10 AM</td>
-                                            <td><label class="badge badge-info">Inctive</label></td>
-                                            <td class="dropdown">
-                                                <i class="fa-solid fa-ellipsis" id="dropdownMenuButton2"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"></i>
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                    aria-labelledby="dropdownMenuButton2">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#viewDetailsModal"><i
-                                                            class="fa-solid fa-info-circle"></i> <span class="mx-2">View
-                                                            Details</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#sendEmailModal"><i class="fa-solid fa-envelope"></i>
-                                                        <span class="mx-2">Send Email</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#activitiesModal"><i
-                                                            class="fa-solid fa-chart-line"></i> <span
-                                                            class="mx-2">Activities</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#referralsModal"><i
-                                                            class="fa-solid fa-user-friends"></i> <span
-                                                            class="mx-2">Referrals</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#resetPassModal"><i class="fa-solid fa-key"></i>
-                                                        <span class="mx-2">Reset Pass</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#suspendModal"><i class="fa-solid fa-ban"></i> <span
-                                                            class="mx-2">Suspend</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#verifyEmailModal"><i
-                                                            class="fa-solid fa-envelope-circle-check"></i>
-                                                        <span class="mx-2">Verify Email</span></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                        <div id="allTable" class="table-container">
-                            <!-- Add the respective form for all here -->
-                            <div class="form-container" id="allForm">
-                                <!-- All form content -->
-                                <table class="table table-hover">
-                                    <thead class="text-uppercase">
-                                        <tr>
-                                            <th>User</th>
-                                            <th>Email</th>
-                                            <th>Balance(Rs)</th>
-                                            <th>Verified Status</th>
-                                            <th>Last Login</th>
-                                            <th>Status</th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Jacob <span><label class="badge badge-warning">Admin</label></span></td>
-                                            <td>Photoshop@gmail.com</td>
-                                            <td>6543</td>
-                                            <td><i class="fa-solid fa-triangle-exclamation mr-2 text-danger"></i><span><label
-                                                        class="badge ">Email</label></span><i
-                                                    class="fa-regular fa-circle-question mr-2 text-warning"></i><span><label
-                                                        class="badge">Kyc</label></span></td>
-                                            <td>Not logged yet</td>
-                                            <td><label class="badge badge-success">Active</label></td>
-                                            <td class="dropdown">
-                                                <i class="fa-solid fa-ellipsis" id="dropdownMenuButton2"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"></i>
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                    aria-labelledby="dropdownMenuButton2">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#viewDetailsModal"><i
-                                                            class="fa-solid fa-info-circle"></i> <span class="mx-2">View
-                                                            Details</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#sendEmailModal"><i class="fa-solid fa-envelope"></i>
-                                                        <span class="mx-2">Send Email</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#activitiesModal"><i
-                                                            class="fa-solid fa-chart-line"></i> <span
-                                                            class="mx-2">Activities</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#referralsModal"><i
-                                                            class="fa-solid fa-user-friends"></i> <span
-                                                            class="mx-2">Referrals</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#resetPassModal"><i class="fa-solid fa-key"></i>
-                                                        <span class="mx-2">Reset Pass</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#suspendModal"><i class="fa-solid fa-ban"></i> <span
-                                                            class="mx-2">Suspend</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#verifyEmailModal"><i
-                                                            class="fa-solid fa-envelope-circle-check"></i>
-                                                        <span class="mx-2">Verify Email</span></a>
-                                                </div>
-                                            </td>
-
-
-                                        </tr>
-
-                                        <tr>
-                                            <td>Jacob <span><label class="badge badge-warning">Admin</label></span></td>
-                                            <td>Photoshop@gmail.com</td>
-                                            <td>6543</td>
-                                            <td><i class="fa-regular fa-circle-check mr-2 text-success "></i><span><label
-                                                        class="badge ">Email</label></span><i
-                                                    class="fa-regular fa-circle-question mr-2 text-warning"></i><span><label
-                                                        class="badge">Kyc</label></span></td>
-                                            <td>24May,2024 11:10 AM</td>
-                                            <td><label class="badge badge-info">Inctive</label></td>
-                                            <td class="dropdown">
-                                                <i class="fa-solid fa-ellipsis" id="dropdownMenuButton2"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"></i>
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                    aria-labelledby="dropdownMenuButton2">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#viewDetailsModal"><i
-                                                            class="fa-solid fa-info-circle"></i> <span class="mx-2">View
-                                                            Details</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#sendEmailModal"><i class="fa-solid fa-envelope"></i>
-                                                        <span class="mx-2">Send Email</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#activitiesModal"><i
-                                                            class="fa-solid fa-chart-line"></i> <span
-                                                            class="mx-2">Activities</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#referralsModal"><i
-                                                            class="fa-solid fa-user-friends"></i> <span
-                                                            class="mx-2">Referrals</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#resetPassModal"><i class="fa-solid fa-key"></i>
-                                                        <span class="mx-2">Reset Pass</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#suspendModal"><i class="fa-solid fa-ban"></i> <span
-                                                            class="mx-2">Suspend</span></a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#verifyEmailModal"><i
-                                                            class="fa-solid fa-envelope-circle-check"></i>
-                                                        <span class="mx-2">Verify Email</span></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
+                            </div>    
                         </div>
                     </div>
+                    <div style="float: right;">
+                        {{$users->links() }}
+                    </div>
+                    
                     <!-- Modals -->
                     {{-- reset password --}}
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

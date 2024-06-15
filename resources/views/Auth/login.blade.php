@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    {{-- <title>Signin Template · Bootstrap v5.0</title> --}}
+    <title>Login</title>
 
     <link rel="canonical" href="https://getbootstrap.comdocs/5.0/examples/sign-in/">
 
@@ -29,7 +29,6 @@
         color="#7952b3">
     <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
@@ -76,19 +75,9 @@
                                         type="submit">SIGN IN</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
-                                    {{-- <div class="form-check">
-                        <label class="form-check-label text-muted">
-                          <input type="checkbox" class="form-check-input">
-                          Keep me signed in
-                        </label>
-                      </div> --}}
                                     <a href="#" class="auth-link text-black">Forgot password?</a>
                                 </div>
-                                {{-- <div class="mb-2">
-                      <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                        <i class="ti-facebook mr-2"></i>Connect using facebook
-                      </button>
-                    </div> --}}
+
                                 <div class="text-center mt-4 font-weight-light">
                                     Don't have an account? <a href="#" data-toggle="modal" data-target="#registermodal">
                                        Register

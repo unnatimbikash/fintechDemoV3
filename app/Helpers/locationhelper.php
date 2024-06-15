@@ -7,4 +7,11 @@ if (!function_exists('IP')) {
         //return $_SERVER['REMOTE_ADDR'];
         return $request->ip();
     }
+};
+
+if (!function_exists('paginate')) {
+    function paginate()
+    {
+        return 6;
+    }
 }
