@@ -348,6 +348,7 @@
                   </li>
                 </ul>
                 <!-- my profile -->
+                dsfsf
                 <div class="tab-content p-3 border">
                     <div id="myProfileContent" class="section-content" style="display: block;">
 
@@ -387,7 +388,7 @@
                       </div>
                     </div>
                     <div id="changePasswordContent" class="section-content" style="display: none;">
-                        
+
                         <form>
                             <div class="form-group">
                                 <label for="currentPassword">Current Password</label>

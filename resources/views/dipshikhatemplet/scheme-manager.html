@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skydash Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo mr-5" href="../../index.html"><img src="../../images/logo.svg"
+                        class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg"
+                        alt="logo" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button>
+                <ul class="navbar-nav mr-lg-2">
+                    <li class="nav-item nav-search d-none d-lg-block">
+                        <div class="input-group">
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
+                                aria-label="search" aria-describedby="search">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                            data-toggle="dropdown">
+                            <i class="icon-bell mx-0"></i>
+                            <span class="count"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-success">
+                                        <i class="ti-info-alt mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Just now
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-warning">
+                                        <i class="ti-settings mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Private message
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-info">
+                                        <i class="ti-user mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            <img src="../../images/faces/face28.jpg" alt="profile" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+                            <a class="dropdown-item">
+                                <i class="ti-settings text-primary"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-settings d-none d-lg-flex">
+                        <a class="nav-link" href="#">
+                            <i class="icon-ellipsis"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_settings-panel.html -->
+
+            <!-- partial -->
+            <!-- partial:../../partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas fixed-left" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transaction.html">
+                            <i class="fa-solid fa-right-left menu-icon"></i>
+                            <span class="menu-title">Transaction</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kyc.html">
+                            <i class="fa-solid fa-list-check menu-icon"></i>
+                            <span class="menu-title">KYC List</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                      <i class="icon-layout menu-icon"></i>
+                      <span class="menu-title">UI Elements</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                      </ul>
+                    </div>
+                  </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
+                            <i class="fa-solid fa-magnifying-glass-dollar menu-icon"></i>
+                            <span class="menu-title">Fund Option</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Transfer</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Return</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
+                            aria-controls="charts">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">User List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="charts">
+                            <ul class="nav flex-column sub-menu">
+                                <!-- <li class="nav-item"> <a class="nav-link" href="#">ChartJs</a></li> -->
+                                <li class="nav-item"> <a class="nav-link" href="superadmin.html"> Super Admin </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="whitelabel.html"> White Label </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Super Distributor </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Distributor </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Retailer </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> API Partner </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="complaint.html">
+                            <i class="fa-solid fa-triangle-exclamation menu-icon"></i>
+                            <span class="menu-title">Complaint</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html">
+                            <i class="ti-settings menu-icon"></i>
+                            <span class="menu-title">Settings</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h1 class="card-title mb-0">Scheme Manager</h1>
+                                    <p class="card-description">
+                                    <div>
+                                        <button class="btn btn-info " data-toggle="modal" data-target="#addSchemeModal">
+                                            <i class="ti-plus mr-2"></i> Add Scheme
+                                        </button>
+                                    </div>
+                                    </p>
+
+
+
+
+
+                                    <div class="filtering-section col-md-12">
+                                        <div class="row p-2">
+                                            <div class="col-md-3 mt-1">
+                                                <label for="filtervalue">Search by value</label>
+                                                <input type="text" name="filtervalue" id="filtervalue"
+                                                    class="form-control" placeholder="Value">
+                                            </div>
+                                            <div class="col-md-2 mt-1">
+                                                <label for="filterFromDate">From Date</label>
+                                                <input type="date" name="filterFromDate" id="filterFromDate"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-md-2 mt-1">
+                                                <label for="filterToDate">To Date</label>
+                                                <input type="date" name="filterToDate" id="filterToDate"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-md-3 mt-1">
+
+                                                <label for="filterschemestatus"> Fund Status</label>
+                                                <select id="filterschemestatus" class="form-control">
+                                                    <option value="active">Active </option>
+                                                    <option value="inactive"> Inactive</option>
+
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 text-right">
+                                                <button class="btn btn-primary mt-4">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive mt-1">
+                                        <table class="table table-hover">
+                                            <thead class="text-uppercase bg-primary text-white">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+
+                                                    <th> Status</th>
+
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Jacob
+                                                    </td>
+                                                    <td>
+                                                        <label class="switch">
+                                                            <input type="checkbox">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <td class="dropdown">
+                                                        <i class="fa-solid fa-ellipsis" id="dropdownMenuButton3"
+                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false"></i>
+                                                        <div class="dropdown-menu dropdown-menu-right"
+                                                            aria-labelledby="dropdownMenuButton3">
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#editSchemeModal"><i
+                                                                    class="fa-solid fa-edit"></i> <span
+                                                                    class="mx-2">Edit</span></a>
+                                                            <h6 class="dropdown-header">Commission</h6>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#mobileCommissionModal"><i
+                                                                    class="fa-solid fa-mobile-alt"></i> <span
+                                                                    class="mx-2">Mobile</span></a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#dthCommissionModal"><i class="fa-solid fa-tv"></i>
+                                                                <span class="mx-2">DTH</span></a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#pancardCommissionModal"><i
+                                                                    class="fa-solid fa-id-card"></i> <span
+                                                                    class="mx-2">Pancard</span></a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#aepsCommissionModal"><i
+                                                                    class="fa-solid fa-fingerprint"></i> <span
+                                                                    class="mx-2">AEPS</span></a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#matmCommissionModal"><i
+                                                                    class="fa-solid fa-credit-card"></i> <span
+                                                                    class="mx-2">mATM</span></a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                                data-target="#cashDepositCommissionModal"><i
+                                                                    class="fa-solid fa-university"></i> <span
+                                                                    class="mx-2">Cash Deposit</span></a>
+                                                        </div>
+                                                    </td>
+
+                                                    <!-- 
+                              <td class="dropdown">
+                                <i class="fa-solid fa-ellipsis" id="dropdownMenuButton3" data-toggle="dropdown"
+                                  aria-haspopup="true" aria-expanded="false"></i>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton3">
+                                  <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#viewDetailsModal"><i class="fa-solid fa-info-circle"></i> <span
+                                      class="mx-2">View Details</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#sendEmailModal"><i
+                                      class="fa-solid fa-envelope"></i> <span class="mx-2">Send Email</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#activitiesModal"><i class="fa-solid fa-chart-line"></i> <span
+                                      class="mx-2">Activities</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#referralsModal"><i
+                                      class="fa-solid fa-user-friends"></i> <span class="mx-2">Referrals</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#resetPassModal"><i
+                                      class="fa-solid fa-key"></i> <span class="mx-2">Reset Pass</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#transactionModal"><i class="fa-solid fa-arrow-right-arrow-left"></i>
+                                    <span class="mx-2">Transaction</span></a>
+
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addTokenModal">
+                                    <i class="fa-solid fa-plus"></i> <span class="mx-2">Add Token</span></a>
+
+
+                                  <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#verifyEmailModal"><i class="fa-solid fa-envelope-circle-check"></i>
+                                    <span class="mx-2">Verify Email</span></a>
+                                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#suspendModal"><i
+                                      class="fa-solid fa-ban"></i> <span class="mx-2">Suspend</span></a>
+                                </div>
+                              </td>
+                                                     -->
+
+                                                </tr>
+                                                <!-- Add more rows as needed -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
+                            Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin
+                                template</a> from BootstrapDash. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made
+                            with <i class="ti-heart text-danger ml-1"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+
+            <!-- Scheme Modal -->
+            <div class="modal fade" id="addSchemeModal" tabindex="-1" role="dialog"
+                aria-labelledby="addSchemeModalLabel1" aria-hidden="true">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addSchemeModalLabel1">Add Scheme</h5>
+                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button> -->
+                        </div>
+                        <div class="modal-body">
+                            <form id="addSchemeForm">
+                                <div class="form-group">
+                                    <label for="bankName">Bank Name</label>
+                                    <input type="text" class="form-control" id="roleName" name="bankName" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div class="modal fade" id="editSchemeModal" tabindex="-1" role="dialog" aria-labelledby="editSchemeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editSchemeModalLabel">Edit</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body ">
+                            <form id="editSchemeForm">
+                                <div class="form-group">
+                                    <label for="name"> Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Modal -->
+            <div class="modal fade" id="mobileCommissionModal" tabindex="-1" role="dialog" aria-labelledby="mobileCommissionModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="mobileCommissionModalLabel">Mobile Commission</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body removeborder">
+                        <form id="mobileCommissionForm">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Operator</th>
+                                            <th>
+                                                <!-- <div class="form-group">
+                                                    <label for="commissionType">Commission Type</label><span><select id="commissionType" name="commissionType" required>
+                                                        <option value="percentage">Percentage</option>
+                                                        <option value="flat">Flat</option>
+                                                    </select></span>
+                                                    
+                                                </div> -->
+                                                Commission Type
+                                            </th>
+                                            <th>White Label</th>
+                                            <th>Master Distributor</th>
+                                            <th>Distributor</th>
+                                            <th>Retailer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Vodafone</td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="vodaphoneSelect">
+                                                        <option>Percentage (%)</option>
+                                                        <option>Flat (Rs)</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input type="number" class="form-control commission-input" name="vodaphoneWhiteLabel" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="vodaphoneMasterDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="vodaphoneDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="vodaphoneRetailer" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>BSNL</td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="bsnlSelect">
+                                                        <option>Percentage (%)</option>
+                                                        <option>Flat (Rs)</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input type="number" class="form-control commission-input" name="bsnlWhiteLabel" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="bsnlMasterDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="bsnlDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="bsnlRetailer" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jio</td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="jioSelect">
+                                                        <option>Percentage (%)</option>
+                                                        <option>Flat (Rs)</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input type="number" class="form-control commission-input" name="jioWhiteLabel" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="jioMasterDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="jioDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="jioRetailer" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Airtel</td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="airtelSelect">
+                                                        <option>Percentage (%)</option>
+                                                        <option>Flat (Rs)</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input type="number" class="form-control commission-input" name="airtelWhiteLabel" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="airtelMasterDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="airtelDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="airtelRetailer" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Idea</td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="ideaSelect">
+                                                        <option>Percentage (%)</option>
+                                                        <option>Flat (Rs)</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td><input type="number" class="form-control commission-input" name="ideaWhiteLabel" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="ideaMasterDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="ideaDistributor" required></td>
+                                            <td><input type="number" class="form-control commission-input" name="ideaRetailer" required></td>
+                                        </tr>
+                               
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!-- dth modal -->
+<div class="modal fade" id="dthCommissionModal" tabindex="-1" role="dialog" aria-labelledby="dthCommissionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dthCommissionModalLabel">Dth Commission</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body removeborder">
+              <form id="dthCommissionForm">
+                  <div class="table-responsive">
+                      <table class="table table-bordered table-sm">
+                          <thead>
+                              <tr>
+                                  
+                                  <th>Operator</th>
+                                  <th>
+                                      <!-- <div class="form-group">
+                                          <label for="commissionType">Commission Type</label><span><select id="commissionType" name="commissionType" required>
+                                              <option value="percentage">Percentage</option>
+                                              <option value="flat">Flat</option>
+                                          </select></span>
+                                          
+                                      </div> -->
+                                      Commission Type
+                                  </th>
+                                  <th>White Label</th>
+                                  <th>Master Distributor</th>
+                                  <th>Distributor</th>
+                                  <th>Retailer</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>VIDEOCON</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="videoconSelect">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="videoconWhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="videoconMasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="videoconDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="videoconRetailer" required></td>
+                              </tr>
+                              <tr>
+                                  <td>SUNDIRECT</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="sundirectSelect">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="sundirectWhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="sundirectMasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="sundirectDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="sundirectRetailer" required></td>
+                              </tr>
+                              <tr>
+                                  <td>TATASKY</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="tataskySelect">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="tataskyWhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="tataskyMasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="tataskyDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="tataskyRetailer" required></td>
+                              </tr>
+                              <tr>
+                                  <td>AIRTEL DTH</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="airteldthSelect">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="airteldthWhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="airteldthMasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="airteldthDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="airteldthRetailer" required></td>
+                              </tr>
+                              <tr>
+                                  <td>DISH</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="dishSelect">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="dishWhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="dishMasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="dishDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="dishRetailer" required></td>
+                              </tr>
+                     
+                          </tbody>
+                          
+                      </table>
+                  </div>
+              </form>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+          </div>
+        </div>
+      </div>
+
+</div>
+           <!--pancard modal  -->
+           <div class="modal fade" id="pancardCommissionModal" tabindex="-1" role="dialog" aria-labelledby="pancardCommissionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="pancardCommissionModalLabel">Pancard Commission</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body removeborder">
+                      <form id="pancardCommissionForm">
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-sm">
+                                  <thead>
+                                      <tr>
+                                          
+                                          <th>Operator</th>
+                                          <th>
+                                              <!-- <div class="form-group">
+                                                  <label for="commissionType">Commission Type</label><span><select id="commissionType" name="commissionType" required>
+                                                      <option value="percentage">Percentage</option>
+                                                      <option value="flat">Flat</option>
+                                                  </select></span>
+                                                  
+                                              </div> -->
+                                              Commission Type
+                                          </th>
+                                          <th>White Label</th>
+                                          <th>Master Distributor</th>
+                                          <th>Distributor</th>
+                                          <th>Retailer</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>UTI PANCARD</td>
+                                          <td>
+                                              <div class="form-group">
+                                                  <select class="form-control" id="utipancardSelect">
+                                                      <option>Percentage (%)</option>
+                                                      <option>Flat (Rs)</option>
+                                                  </select>
+                                              </div>
+                                          </td>
+                                          <td><input type="number" class="form-control commission-input" name="utipancardWhiteLabel" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="utipancardMasterDistributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="utipancardDistributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="utipancardRetailer" required></td>
+                                      </tr>
+                                    
+                             
+                                  </tbody>
+                                  
+                              </table>
+                          </div>
+                      </form>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+
+        <!-- aeps modal -->
+        <div class="modal fade" id="aepsCommissionModal" tabindex="-1" role="dialog" aria-labelledby="aepsCommissionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="aepsCommissionModalLabel">Aeps Commission</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body removeborder">
+                      <form id="aepsCommissionForm">
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-sm">
+                                  <thead>
+                                      <tr>
+                                          
+                                          <th>Slab Range(Rs)</th>
+                                          <th>
+                                            
+                                              Commission Type
+                                          </th>
+                                          <th>White Label</th>
+                                          <th>Master Distributor</th>
+                                          <th>Distributor</th>
+                                          <th>Retailer</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>Slab1(500-999)</td>
+                                          <td>
+                                              <div class="form-group">
+                                                  <select class="form-control" id="aepsslab1Select">
+                                                      <option>Percentage (%)</option>
+                                                      <option>Flat (Rs)</option>
+                                                  </select>
+                                              </div>
+                                          </td>
+                                          <td><input type="number" class="form-control commission-input" name="aepsslab1WhiteLabel" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="aepsslab1MasterDistributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="aepsslab1Distributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="aepsslab1Retailer" required></td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>Slab2(1000-1499)</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <select class="form-control" id="aepsslab2Select">
+                                                    <option>Percentage (%)</option>
+                                                    <option>Flat (Rs)</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab2WhiteLabel" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab2MasterDistributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab2Distributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab2Retailer" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Slab3(1500-1999)</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <select class="form-control" id="aepsslab3Select">
+                                                    <option>Percentage (%)</option>
+                                                    <option>Flat (Rs)</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab3WhiteLabel" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab3MasterDistributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab3Distributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="aepsslab3Retailer" required></td>
+                                    </tr>
+                                    
+                             
+                                  </tbody>
+                                  
+                              </table>
+                          </div>
+                      </form>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+        <!-- matm -->
+
+        <div class="modal fade" id="matmCommissionModal" tabindex="-1" role="dialog" aria-labelledby="matmCommissionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="matmCommissionModalLabel">mATM Commission</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body removeborder">
+                      <form id="matmCommissionForm">
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-sm">
+                                  <thead>
+                                      <tr>
+                                          
+                                          <th>Slab Range(Rs)</th>
+                                          <th>
+                                            
+                                              Commission Type
+                                          </th>
+                                          <th>White Label</th>
+                                          <th>Master Distributor</th>
+                                          <th>Distributor</th>
+                                          <th>Retailer</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>Slab1(500-999)</td>
+                                          <td>
+                                              <div class="form-group">
+                                                  <select class="form-control" id="matmslab1Select">
+                                                      <option>Percentage (%)</option>
+                                                      <option>Flat (Rs)</option>
+                                                  </select>
+                                              </div>
+                                          </td>
+                                          <td><input type="number" class="form-control commission-input" name="matmslab1WhiteLabel" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="matmslab1MasterDistributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="matmslab1Distributor" required></td>
+                                          <td><input type="number" class="form-control commission-input" name="matmslab1Retailer" required></td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>Slab2(1000-1499)</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <select class="form-control" id="matmslab2Select">
+                                                    <option>Percentage (%)</option>
+                                                    <option>Flat (Rs)</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab2WhiteLabel" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab2MasterDistributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab2Distributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab2Retailer" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Slab3(1500-1999)</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <select class="form-control" id="matmslab3Select">
+                                                    <option>Percentage (%)</option>
+                                                    <option>Flat (Rs)</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab3WhiteLabel" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab3MasterDistributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab3Distributor" required></td>
+                                        <td><input type="number" class="form-control commission-input" name="matmslab3Retailer" required></td>
+                                    </tr>
+                                    
+                             
+                                  </tbody>
+                                  
+                              </table>
+                          </div>
+                      </form>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+<!-- cash deposit modal -->
+<div class="modal fade" id="cashDepositCommissionModal" tabindex="-1" role="dialog" aria-labelledby="cashDepositCommissionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cashDepositCommissionModalLabel">Cash Deposit Commission</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body removeborder">
+              <form id="cashDepositCommissionForm">
+                  <div class="table-responsive">
+                      <table class="table table-bordered table-sm">
+                          <thead>
+                              <tr>
+                                  
+                                  <th>Slab Range(Rs)</th>
+                                  <th>
+                                    
+                                      Commission Type
+                                  </th>
+                                  <th>White Label</th>
+                                  <th>Master Distributor</th>
+                                  <th>Distributor</th>
+                                  <th>Retailer</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Slab1(500-3000)</td>
+                                  <td>
+                                      <div class="form-group">
+                                          <select class="form-control" id="cashDepositslab1Select">
+                                              <option>Percentage (%)</option>
+                                              <option>Flat (Rs)</option>
+                                          </select>
+                                      </div>
+                                  </td>
+                                  <td><input type="number" class="form-control commission-input" name="cashDepositslab1WhiteLabel" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="cashDepositslab1MasterDistributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="cashDepositslab1Distributor" required></td>
+                                  <td><input type="number" class="form-control commission-input" name="cashDepositslab1Retailer" required></td>
+                              </tr>
+
+                              <tr>
+                                <td>Slab2(3001-4000)</td>
+                                <td>
+                                    <div class="form-group">
+                                        <select class="form-control" id="cashDepositslab2Select">
+                                            <option>Percentage (%)</option>
+                                            <option>Flat (Rs)</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab2WhiteLabel" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab2MasterDistributor" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab2Distributor" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab2Retailer" required></td>
+                            </tr>
+                            <tr>
+                                <td>Slab3(4001-5000)</td>
+                                <td>
+                                    <div class="form-group">
+                                        <select class="form-control" id="cashDepositslab3Select">
+                                            <option>Percentage (%)</option>
+                                            <option>Flat (Rs)</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab3WhiteLabel" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab3MasterDistributor" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab3Distributor" required></td>
+                                <td><input type="number" class="form-control commission-input" name="cashDepositslab3Retailer" required></td>
+                            </tr>
+                            
+                     
+                          </tbody>
+                          
+                      </table>
+                  </div>
+              </form>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="mobileCommissionForm">Submit</button>
+          </div>
+        </div>
+      </div>
+
+</div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="../../vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../js/off-canvas.js"></script>
+        <script src="../../js/hoverable-collapse.js"></script>
+        <script src="../../js/template.js"></script>
+        <script src="../../js/settings.js"></script>
+        <script src="../../js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+<!-- commission setting -->
+
+
+        <!-- End custom js for this page-->
+</body>
+
+</html>

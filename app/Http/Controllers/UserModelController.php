@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 use App\Models\LoginModel;
+use Spatie\Permission\Models\Role;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -15,14 +16,49 @@ use Cookie;
 class UserModelController extends Controller
 {
     public function login(){
-        return view('Auth.login');
+        $role=Role::get();
+        return view('Auth.login',compact('role'));
     }
     public function logout(){
         Auth::logout();
         return redirect('/login');
     }
+    public function register(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+            'mobile' => ['required', 'regex:/^(\+\d{1,3}[- ]?)?\d{10}$/'],
+            'state' => ['required'],
+            'city' => ['required'],
+            'pincode' => ['required', 'regex:/^[1-9][0-9]{5}$/'],
+            'address' => ['required'],
+            'shopname' => ['required'],
+            'pancard' => ['required', 'regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/'],
+            'aadharcard' => ['required', 'regex:/^\d{12}$/']
+        ]);
+        if($validator->fails()){
+            return response()->json(['success'=>false,'msg'=>'Wrong Input Format']);
+        }
+        $user = new UserModel();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->state = $request->state;
+        $user->city = $request->city;
+        $user->pincode = $request->pincode;
+        $user->address = $request->address;
+        $user->shopname = $request->shopname;
+        $user->aadharcard = $request->aadharcard;
+        $user->latitude = $request->latitude;
+        $user->longitude = $request->longitude;
+        $user->ip=IP($request);
+        $user->save();
+        return response()->json(['success'=>false,'msg'=>'Registered Successfully']);
+         dd($request);
+    }
 
     public function verifylogin(Request $request){
+        // dd($request);
        // dd(gethostbyname(gethostname()),$_SERVER['REMOTE_ADDR'],$request->ip());
         $validator=Validator::make($request->all(), [
             'email' => ['required'],

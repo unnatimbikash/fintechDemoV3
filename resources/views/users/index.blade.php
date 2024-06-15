@@ -1,6 +1,51 @@
 @extends('layouts.layout')
 @section('title', 'setting')
 @section('content')
+<style>
+    svg{
+        width:25px;
+    }
+    .list-group {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    border: 0.05px solid #dbd9d9;
+    width: 430px;
+
+    margin-right: 9px;
+}
+.list-group li{
+    list-style-type: none;
+}
+    /* .pagination nav span{
+        display:none;
+    } */
+    /* }.pagination nav a{
+        display:none;
+    } */
+
+    #quicksearch {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+    #itemsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#itemsList li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#itemsList li:last-child {
+    border-bottom: none;
+}
+</style>
     <div class="content-wrapper">
         <div class="col-lg-12 stretch-card">
             <div class="card">
@@ -13,17 +58,27 @@
                         </button>
                     </div>
                     </p>
+                    
                     <div class="row border">
-                        {{-- <div class="col-md-6 p-1 d-flex align-items-center">
-                <span class="mr-3 status-option active" id="investor" data-status="investor">Investor/User</span>
-                <span class="mr-3 status-option" id="admin" data-status="admin">Admin Account</span>
-                <span class="mr-3 status-option" id="all" data-status="all">All</span>
-              </div> --}}
-                        <div class="col-md-6 d-flex justify-content-end align-items-center p-3">
-                            <input type="text" class="form-control mr-2" placeholder=" Quick Search...">
-                            <i class="ti-filter mr-3"></i>
-                            <i class="ti-file mr-3"></i>
-                            <i class="ti-settings"></i>
+                        <div class="col-md-6 p-1 d-flex align-items-center px-4 pt-4">
+                            <select class="form-control form-select form-select-lg mb-3" id="user-role-select"
+                                aria-label=".form-select-lg example">
+                                <option>select</option>
+                                <option value="all">all</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class=" row col-md-6 d-flex justify-content-end align-items-center p-3">
+                            <input type="hidden" value={{$searchuser}} id="searchdata">
+                            <div class="col-md-12">
+                                <input type="text" class="  form-control mr-2" placeholder=" Quick Search..." id="quicksearch">
+                            </div>
+                            <div class="col-md-12">
+                                <ul  id="itemsList" class=' list-group'></ul>
+                            </div>
+
                         </div>
                     </div>
                     <div class="table-responsive pt-3">
@@ -46,7 +101,10 @@
                                     <tbody>
                                         @foreach ($users as $key => $user)
                                             <tr>
-                                                <td>{{ $user->name}}<span><label class="badge badge-warning">{{$user->role}}</label></span></td>
+                                                <td class="row"><span
+                                                    class="text-center">{{ $user->name }}({{ $user->agentcode }})</span><span><label
+                                                    class="badge badge-warning">{{ $user->role->name }}</label></span>
+                                                </td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->mainwallet }}</td>
                                                 <td><i class="fa-solid fa-triangle-exclamation mr-2 text-danger"></i><span><label
@@ -60,7 +118,8 @@
                                                                     : 'fa-regular fa-circle-xmark')) }}"></i><span><label
                                                             class="badge">Kyc</label></span></td>
                                                 <td>{{ $user->lastlogin }}</td>
-                                                <td><label class="badge badge-success">{{ ucfirst($user->status) }}</label>
+                                                <td><label id="statusview"
+                                                        class="{{ $user->status === 'block' ? 'badge badge-danger' : ' badge badge-success' }} ">{{ ucfirst($user->status) }}</label>
                                                 </td>
 
                                                 <td class="dropdown">
@@ -70,26 +129,34 @@
                                                     <div class="dropdown-menu dropdown-menu-right"
                                                         aria-labelledby="dropdownMenuButton2">
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
-                                                            data-target="#viewDetailsModal" onclick="viewdetails({{$user}})"><i
-                                                                class="fa-solid fa-info-circle" ></i> <span
+                                                            data-target="#viewDetailsModal"
+                                                            onclick="viewdetails({{ $user }})"><i
+                                                                class="fa-solid fa-info-circle"></i> <span
                                                                 class="mx-2">View Details</span></a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                                             data-target="#sendEmailModal"><i
                                                                 class="fa-solid fa-envelope"></i> <span class="mx-2">Send
                                                                 Email</span></a>
-                                                                @if($user->kyc=="pending")
-                                                                <a class="dropdown-item" href="{{url('member/editdetails')}}/{{$user->id}}" ><i
+                                                        @if ($user->kyc == 'pending')
+                                                            <a class="dropdown-item"
+                                                                href="{{ url('member/editdetails') }}/{{ $user->id }}"><i
                                                                     class="fa-solid fa-chart-line"></i> <span
                                                                     class="mx-2">edit profile</span></a>
-                                                                @endif
+                                                        @endif
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                                             data-target="#referralsModal"><i
                                                                 class="fa-solid fa-user-friends"></i> <span
                                                                 class="mx-2">Referrals</span></a>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa-solid fa-key"></i>
-                                                            <span class="mx-2" onclick="resetpassword({{$user->id}})">Reset Pass</span></a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
-                                                            data-target="#suspendModal"><i class="fa-solid fa-ban"></i>
+                                                            data-target="#exampleModalCenter"><i
+                                                                class="fa-solid fa-key"></i>
+                                                            <span class="mx-2"
+                                                                onclick="resetthispassword({{ $user->id }})">Reset
+                                                                Pass</span></a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal"
+                                                            data-target="#suspendModal"
+                                                            onclick="viewstatuses('{{ $user->id }}')"><i
+                                                                class="fa-solid fa-ban"></i>
                                                             <span class="mx-2">Suspend</span></a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal"
                                                             data-target="#verifyEmailModal"><i
@@ -98,12 +165,21 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <input type="hidden" value="{{$user}}" id="userinfodata">
+                                            <input type="hidden" value="{{ $user }}" id="userinfodata">
+
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
+                        </div>
+                        <div class="pagination">
+                            @php
+                                if($data){
+                                   echo  $users->appends(['data' => $data])->links('vendor.pagination.bootstrap-4');
+                                }else{
+                                   echo $users->appends(['name' => $name])->links('vendor.pagination.bootstrap-4');
+                                }
+                                @endphp
                         </div>
                         <div id="adminTable" class="table-container">
                             <!-- Add the respective form for admin here -->
@@ -134,7 +210,8 @@
                                             <td><label class="badge badge-success">Active</label></td>
                                             <td class="dropdown">
                                                 <i class="fa-solid fa-ellipsis" id="dropdownMenuButton2"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false"></i>
                                                 <div class="dropdown-menu dropdown-menu-right"
                                                     aria-labelledby="dropdownMenuButton2">
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
@@ -314,8 +391,8 @@
                                                         data-target="#resetPassModal"><i class="fa-solid fa-key"></i>
                                                         <span class="mx-2">Reset Pass</span></a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#suspendModal"><i class="fa-solid fa-ban"></i> <span
-                                                            class="mx-2">Suspend</span></a>
+                                                        data-target="#suspendforModal"><i class="fa-solid fa-ban"></i>
+                                                        <span class="mx-2">Suspend</span></a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#verifyEmailModal"><i
                                                             class="fa-solid fa-envelope-circle-check"></i>
@@ -331,42 +408,50 @@
                     </div>
                     <!-- Modals -->
                     {{-- reset password --}}
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                          <form action="{{url('member/resetpasswords')}}" onsubmit="resetformsubmit(event)" method="POST" id="passwordresetform">
-                            @csrf
-                                <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Verify Password</label>
-                                    <input type="password" class="form-control" id="verifypassword" name="verifypassword" >
-                                    <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Your Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
-                                    <small id="confirmpassword" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
+                                <form action="{{ url('member/resetpasswords') }}" onsubmit="resetformsubmit(event)"
+                                    method="POST" id="passwordresetform">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Verify Password</label>
+                                            <input type="password" class="form-control" id="verifypassword"
+                                                name="verifypassword">
+                                            <small class="form-text text-muted">We'll never share your email with anyone
+                                                else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Your Password</label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                            <small class="form-text text-muted">We'll never share your email with anyone
+                                                else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Confirm Password</label>
+                                            <input type="password" class="form-control" id="confirmpassword"
+                                                name="confirmpassword">
+                                            <small id="confirmpassword" class="form-text text-muted">We'll never share
+                                                your email with anyone else.</small>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" class="form-control" id="passwordid" name="id"
+                                        value="">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
-                            <input type="hidden" class="form-control" id="passwordid" value="" >
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </form>
-                          </div>
                         </div>
-                      </div>
+                    </div>
                     <!-- View Details Modal -->
                     <div class="modal fade" id="viewDetailsModal" tabindex="-1" role="dialog"
                         aria-labelledby="viewDetailsModalLabel" aria-hidden="true">
@@ -395,9 +480,8 @@
                                         <div class="col-md-3">
                                             <h4>Action</h4>
                                             <i class="fa-solid fa-triangle-exclamation mr-2 text-danger"></i><span><label
-                                                    class="badge ">Email</label></span><i
-                                                class="fa-regular  mr-2 " id="viewkycstatus"></i><span><label
-                                                    class="badge">Kyc</label></span>
+                                                    class="badge ">Email</label></span><i class="fa-regular  mr-2 "
+                                                id="viewkycstatus"></i><span><label class="badge">Kyc</label></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 grid-margin stretch-card">
@@ -446,11 +530,77 @@
                                                             <th>2FA Enabled:</th>
                                                             <td>No</td>
                                                         </tr> --}}
-                                                        <tr>
-                                                            <th>last Login:</th>
-                                                            <td id="viewlogin">Not logged</td>
-                                                        </tr>
+
                                                     </table>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-6">
+                                                            <h4>Kyc Information</h4>
+                                                            <div class="table-responsive pt-3">
+                                                                <table class="table table-bordered">
+                                                                    <tr>
+                                                                        <th>Kyc Satus:</th>
+                                                                        <td id='kycstatus'></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Pancard Number:</th>
+                                                                        <td id='pannumber'></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Aadhar Mobile:</th>
+                                                                        <td id='aadharnumber'></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Adharcard:</th>
+                                                                        <td id='aadharcard'></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Shopname:</th>
+                                                                        <td id='shopname'></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Otp Verify:</th>
+                                                                        <td id='otpstatus'></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h4>Login Information</h4>
+                                                            <div class="table-responsive pt-3">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th colspan="2">Current</th>
+                                                                            <th colspan="2">Last</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Current Login:</td>
+                                                                            <td id="currentlogin">Not logged</td>
+                                                                            <td>Last Login:</td>
+                                                                            <td id="viewlogin">Not logged</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Current Latitude & Longitude:</td>
+                                                                            <td id="currentlat_long"></td>
+                                                                            <td>Last Latitude & Longitude:</td>
+                                                                            <td id="lastlat_long"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Current IP Address:</td>
+                                                                            <td id="currentip">Not logged</td>
+                                                                            <td>Last IP Address:</td>
+                                                                            <td id="lastip">Not logged</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -509,7 +659,38 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- suspendmodal --}}
+                    <div class="modal fade" id="suspendModal" tabindex="-1" role="dialog"
+                        aria-labelledby="sendEmailModalLabel" aria-hidden="true">
+                        <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="sendEmailModalLabel">Suspend Modal</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ url('member/changestatus') }}" method="post"
+                                        onsubmit="changestatus(event)" id="statuschange">
+                                        @csrf
+                                        <input type="hidden" id="idstatus" value="" name="id">
+                                        <select class="form-select form-control" aria-label="Default select example"
+                                            name="status">
+                                            <option value="active">active</option>
+                                            <option value="block">inactive</option>
+                                        </select>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Comment</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Password" name="rejected_remarks">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">change</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- activities modal -->
                     <div class="modal fade" id="sendEmailModal" tabindex="-1" role="dialog"
                         aria-labelledby="sendEmailModalLabel" aria-hidden="true">
@@ -546,10 +727,10 @@
                                 <form method="post" action="{{ url('/member/store') }}">
                                     @csrf
                                     <!-- @if ($errors->any())
-                            @foreach ($errors->all() as $error)
+                                    @foreach ($errors->all() as $error)
     <div >{{ $error }}</div>
     @endforeach
-                        @endif -->
+                                @endif -->
                                     <div class="form-group ">
                                         <label for="userRole">User Type</label>
                                         <select class="form-control" id="userRole" name="roleid"
@@ -625,4 +806,3 @@
 </div>
 </div>
 @endsection
-

@@ -95,25 +95,25 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="registermodalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="registermodalLabel">Register</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <form id="registerForm" action="https://partner.spayu.co.in/auth/register"
-                                method="post" id="formregister" onsubmit="formregister(event)">
-                                <input type="hidden" name="_token"
-                                    value="fo2aR37ljXQVfokUGNBiZPGHARANSs3LqnHqTrcp">
-                                <legend>Member type</legend>
+                                method="get" id="formregister" onsubmit="formregister(event)">
+                                {{-- @csrf --}}
+                                {{-- <input type="hidden" name="_token" id="token"
+                                    value="fo2aR37ljXQVfokUGNBiZPGHARANSs3LqnHqTrcp" autocomplete="off">
+                                <legend>Member type</legend> --}}
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label>Member Type</label>
                                         <select name="slug" class="form-control select" id="slug" required="">
-                                            <option value="">Select Member Type</option>
-                                            <option value="md">Master Distributor</option>
-                                            <option value="distributor">Distributor</option>
-                                            <option value="retailer">Retailer</option>
+                                            @foreach ($role as $r )
+                                            <option value="{{$r->id}}">{{$r->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -127,19 +127,19 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="exampleInputPassword1" class="text-uppercase">Email</label>
-                                        <input type="text" name="email" id="emai"class="form-control"
+                                        <input type="text" name="email" id="email"class="form-control"
                                             placeholder="Enter your email id" required>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="exampleInputPassword1" class="text-uppercase">Mobile</label>
-                                        <input type="text" name="mobile" class="form-control"
+                                        <input type="text" name="mobile" class="form-control" id="mobile"
                                             placeholder="Enter your mobile" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label>State</label>
-                                        <select name="state" class="form-control state" id="" >
+                                        <select name="state" class="form-control state" id="state" >
                                             <option value="">Select State</option>
                                             <option value="ASSAM">ASSAM</option>
                                             <option value="BIHAR">BIHAR</option>
@@ -173,11 +173,11 @@
                                     <div class="form-group col-md-4">
                                         <label>City</label>
                                         <input type="text" name="city" class="form-control" value=""
-                                            required="" placeholder="Enter Value">
+                                          id="city"  required="" placeholder="Enter Value">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Pincode</label>
-                                        <input type="text" name="pincode" class="form-control" value=""
+                                        <input type="text" name="pincode" class="form-control" value=""  id="pincode"
                                             required="" maxlength="6" minlength="6" placeholder="Enter Value"
                                             pattern="[0-9]*">
                                     </div>
@@ -185,7 +185,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label>Address</label>
-                                        <textarea name="address" class="form-control" rows="3" required="" placeholder="Enter Value"></textarea>
+                                        <textarea name="address" id="address" class="form-control" rows="3" required="" placeholder="Enter Value"></textarea>
                                     </div>
                                 </div>
 
@@ -193,23 +193,23 @@
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label>Shop Name</label>
-                                        <input type="text" name="shopname" class="form-control" value=""
+                                        <input type="text" name="shopname" class="form-control" value="" id="shopname"
                                             required="" placeholder="Enter Value">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Pancard</label>
-                                        <input type="text" name="pancard" class="form-control" value=""
+                                        <input type="text" name="pancard" class="form-control" value="" id="pancard"
                                             required="" placeholder="Enter Value">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Aadhar</label>
-                                        <input type="text" name="aadharcard" required="" class="form-control"
+                                        <input type="text" name="aadharcard" required="" class="form-control"  id="aadharcard"
                                             placeholder="Enter Value" pattern="[0-9]*" maxlength="12"
                                             minlength="12">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
                         </div>

@@ -15,3 +15,9 @@ if (!function_exists('paginate')) {
         return 6;
     }
 }
+if(!function_exists('user')){
+    function user(){
+        return Auth::user();
+    }
+}
+

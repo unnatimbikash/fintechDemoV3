@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skydash Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+    <style>
+        .more-options {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .card-container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo mr-5" href="../../index.html"><img src="../../images/logo.svg"
+                        class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg"
+                        alt="logo" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button>
+                <ul class="navbar-nav mr-lg-2">
+                    <li class="nav-item nav-search d-none d-lg-block">
+                        <div class="input-group">
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
+                                aria-label="search" aria-describedby="search">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                            data-toggle="dropdown">
+                            <i class="icon-bell mx-0"></i>
+                            <span class="count"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-success">
+                                        <i class="ti-info-alt mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Just now
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-warning">
+                                        <i class="ti-settings mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Private message
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-info">
+                                        <i class="ti-user mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            <img src="../../images/faces/face28.jpg" alt="profile" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+                            <a class="dropdown-item">
+                                <i class="ti-settings text-primary"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-settings d-none d-lg-flex">
+                        <a class="nav-link" href="#">
+                            <i class="icon-ellipsis"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+
+
+            <!-- partial:../../partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas fixed-left" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transaction.html">
+                            <i class="fa-solid fa-right-left menu-icon"></i>
+                            <span class="menu-title">Transaction</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kyc.html">
+                            <i class="fa-solid fa-list-check menu-icon"></i>
+                            <span class="menu-title">KYC List</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                      <i class="icon-layout menu-icon"></i>
+                      <span class="menu-title">UI Elements</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                      </ul>
+                    </div>
+                  </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
+                            <i class="fa-solid fa-magnifying-glass-dollar menu-icon"></i>
+                            <span class="menu-title">Fund Option</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="form-elements">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Transfer</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Fund Return</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
+                            aria-controls="charts">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">User List</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="charts">
+                            <ul class="nav flex-column sub-menu">
+                                <!-- <li class="nav-item"> <a class="nav-link" href="#">ChartJs</a></li> -->
+                                <li class="nav-item"> <a class="nav-link" href="superadmin.html"> Super Admin </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="whitelabel.html"> White Label </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Super Distributor </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Distributor </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Retailer </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> API Partner </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="complaint.html">
+                            <i class="fa-solid fa-triangle-exclamation menu-icon"></i>
+                            <span class="menu-title">Complaint</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+                      <i class="ti-settings menu-icon"></i>
+                      <span class="menu-title">Settings</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    
+                  </li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html">
+                            <i class="ti-settings menu-icon"></i>
+                            <span class="menu-title">Settings</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="card card-container p-2">
+                                <ul class="list-group custom-list-group">
+                                    <li class="list-group-item"><a href="#" onclick="showForms('icostoForm',this)"
+                                            class="dropdown-item">ICO/STO</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('websiteForm',this)"
+                                            class="dropdown-item">Website</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('referralForm',this)"
+                                            class="dropdown-item">Referral</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('mailingForm',this)"
+                                            class="dropdown-item">Mailing</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('smsForm',this)"
+                                            class="dropdown-item">SMS</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('paymentForm',this)"
+                                            class="dropdown-item">Payment Method</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('managepageForm',this)"
+                                            class="dropdown-item">Manage Page</a></li>
+                                    <li class="list-group-item"><a href="#"
+                                            onclick="showForms('applicationapiForm',this)"
+                                            class="dropdown-item">Application API</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('languageForm',this)"
+                                            class="dropdown-item">Language</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('comissionForm',this)"
+                                            class="dropdown-item">Commission Slab</a></li>
+                                    <li class="list-group-item"><a href="#"
+                                            onclick="showForms('role&permissionForm',this)" class="dropdown-item">Role &
+                                            Permission</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('apiForm',this)"
+                                            class="dropdown-item">API</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('retailerForm',this)"
+                                            class="dropdown-item">Retailer</a></li>
+                                    <li class="list-group-item"><a href="#" onclick="showForms('systemstatusForm',this)"
+                                            class="dropdown-item">System Status</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card card-container p-3">
+                                <!-- ICO/STO Form -->
+                                <div class="form-container" id="icostoForm" style="display: none;">
+                                    <h2>ICO /STO</h2>
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6 ">
+                                                <label for="siteName">Token Name</label>
+                                                <input type="text" class="form-control" id="siteName"
+                                                    placeholder="Enter site name" value="unnatim pay">
+                                                <small class="form-text text-muted">Enter name of website.</small>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="tokenSymbol">Token Symbol</label>
+                                                <input type="text" class="form-control" id="tokenSymbol"
+                                                    placeholder="Enter token symbol">
+                                                <small class="form-text text-muted">Usually 3-4 letters like BTC, UTC,
+                                                    ETH.</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4 mt-3">
+                                                <label for="decimalMin">Decimal Minimum</label>
+                                                <input type="number" class="form-control" id="decimalMin"
+                                                    placeholder="Min">
+                                                <small class="form-text text-muted">Minimum number of decimal points for
+                                                    calculation. 2-8 are accepted.</small>
+                                            </div>
+                                            <div class="form-group col-md-4 mt-3">
+                                                <label for="decimalMax">Decimal Maximum</label>
+                                                <input type="number" class="form-control" id="decimalMax"
+                                                    placeholder="Max">
+                                                <small class="form-text text-muted">Maximum number of decimal points for
+                                                    calculation. 6-18 are accepted.</small>
+                                            </div>
+                                            <div class="form-group col-md-4 mt-3">
+                                                <label for="decimalDisplay">Decimal Display</label>
+                                                <input type="number" class="form-control" id="decimalDisplay"
+                                                    placeholder="Display">
+                                                <small class="form-text text-muted">The number of decimal points applied
+                                                    to show numbers in User/Admin card balance.</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-right mt-5">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Website Form -->
+                                <div id="websiteForm" class="form-container" style="display: none;">
+                                    <h2>Website Form</h2>
+                                    <ul class="nav nav-tabs" id="settingsTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="site-info-tab" data-toggle="tab"
+                                                href="#site-info" role="tab" aria-controls="site-info"
+                                                aria-selected="true">Site Info</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="general-settings-tab" data-toggle="tab"
+                                                href="#general-settings" role="tab" aria-controls="general-settings"
+                                                aria-selected="false">General Settings</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="social-links-tab" data-toggle="tab"
+                                                href="#social-links" role="tab" aria-controls="social-links"
+                                                aria-selected="false">Social Links</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="api-settings-tab" data-toggle="tab"
+                                                href="#api-settings" role="tab" aria-controls="api-settings"
+                                                aria-selected="false">API Settings</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="advance-tab" data-toggle="tab" href="#advance"
+                                                role="tab" aria-controls="advance" aria-selected="false">Advance</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <!-- Site Info Form -->
+                                        <div class="tab-pane fade show active" id="site-info" role="tabpanel"
+                                            aria-labelledby="site-info-tab">
+                                            <form>
+                                                <!-- 1st row: Site Name, Site Email, Copyright -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="siteName">Site Name</label>
+                                                        <input type="text" class="form-control" id="siteName"
+                                                            placeholder="Enter site name" value="unnatim pay" readonly>
+                                                        <small class="form-text text-muted">Enter name of
+                                                            website.</small>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="siteEmail">Site Email</label>
+                                                        <input type="email" class="form-control" id="siteEmail"
+                                                            placeholder="Enter site email"
+                                                            value="support@unnatimpay.in">
+                                                        <small class="form-text text-muted">For contact and sending
+                                                            emails.</small>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="copyright">Copyright</label>
+                                                        <input type="text" class="form-control" id="copyright"
+                                                            value="All rights reserved">
+                                                        <small class="form-text text-muted">Copyright text for
+                                                            site.</small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 2nd row: Contact Address, Contact Phone, Support Email -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="contactAddress">Contact Address</label>
+                                                        <input type="text" class="form-control" id="contactAddress"
+                                                            placeholder="Enter contact address">
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="contactPhone">Contact Phone</label>
+                                                        <input type="text" class="form-control" id="contactPhone"
+                                                            placeholder="Enter contact phone">
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="supportEmail">Support Email</label>
+                                                        <input type="email" class="form-control" id="supportEmail"
+                                                            placeholder="Enter support email">
+                                                    </div>
+                                                </div>
+
+                                                <!-- 3rd row: Main Site URL, Upload Logo File, Update F-Icon -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="mainSiteURL">Main Site URL</label>
+                                                        <input type="url" class="form-control" id="mainSiteURL"
+                                                            placeholder="Enter main site URL">
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="logoFile">Upload Logo File</label>
+                                                        <input type="file" class="form-control form-control-file"
+                                                            id="logoFile">
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="fIcon">Update F-Icon</label>
+                                                        <input type="file" class="form-control form-control-file"
+                                                            id="fIcon">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Update Button -->
+                                                <div class="text-right mt-5">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <!-- General Settings Form -->
+                                        <div class="tab-pane fade" id="general-settings" role="tabpanel"
+                                            aria-labelledby="general-settings-tab">
+                                            <form>
+                                                <!-- 1st row: Time Zone, Date Format, Time Format -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="timeZone">Time Zone</label>
+                                                        <select class="form-control" id="timeZone">
+                                                            <option value="Asia/Kolkata" selected>(UTC +05:30) Kolkata
+                                                                (Default)</option>
+                                                            <option value="America/New_York">(UTC -05:00) New York
+                                                            </option>
+                                                            <option value="Europe/London">(UTC +00:00) London</option>
+                                                            <!-- Add more options for other time zones -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Select application time
+                                                            zone.</small>
+                                                    </div>
+
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="dateFormat">Date Format</label>
+                                                        <select class="form-control" id="dateFormat">
+                                                            <option value="dd-mm-yyyy" selected>dd-mm-yyyy (Default)
+                                                            </option>
+                                                            <option value="mm-dd-yyyy">mm-dd-yyyy</option>
+                                                            <!-- Add more options for other date formats -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Select application date
+                                                            format.</small>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="timeFormat">Time Format</label>
+                                                        <select class="form-control" id="timeFormat">
+                                                            <option value="12hr" selected>12hr (Default)</option>
+                                                            <option value="24hr">24hr</option>
+                                                            <!-- Add more options for other time formats -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Select application time
+                                                            format.</small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 2nd row: Admin Theme, Auth Page Layout, User Panel Theme -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="adminTheme">Admin Theme</label>
+                                                        <select class="form-control" id="adminTheme">
+                                                            <option value="light" selected>Light (Default)</option>
+                                                            <option value="dark">Dark</option>
+                                                            <!-- Add more options for other admin themes -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Style scheme for admin area
+                                                            .</small>
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="authPageLayout">Auth Page Layout</label>
+                                                        <select class="form-control" id="authPageLayout">
+                                                            <option value="default" selected>Default (Default)</option>
+                                                            <option value="alterside">Alter Side</option>
+                                                            <option value="center-light">Center Light</option>
+                                                            <option value="center-dark">Center Dark</option>
+                                                            <!-- Add more options for other auth page layouts -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Login/Registration page
+                                                            design layout .</small>
+                                                    </div>
+                                                    <div class="form-group col-md-4 mt-3">
+                                                        <label for="userPanelTheme">User Panel Theme</label>
+                                                        <select class="form-control" id="userPanelTheme">
+                                                            <option value="default" selected>Default (Default)</option>
+                                                            <option value="color">Other Color</option>
+                                                            <!-- Add more options for other user panel themes -->
+                                                        </select>
+                                                        <small class="form-text text-muted">Style scheme for user
+                                                            area.</small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 3rd row: Checkbox and Toggle for Enable/Disable -->
+                                                <div class="form-row">
+
+                                                    <div class="form-group col-xs-6 mt-1">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="enableDisableCheckbox">
+                                                            <label class="form-check-label"
+                                                                for="enableDisableCheckbox">Enable custom
+                                                                Stylesheet</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-xs-6 mt-1">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="flexSwitchCheckDefault">
+                                                            <label class="form-check-label"
+                                                                for="flexSwitchCheckDefault">
+                                                                Maintenance Mode </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!-- Update Button -->
+                                                    <div class="form-group col-md-3 mt-2 text-right">
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </form>
+
+                                        </div>
+
+                                        <!-- Social Links Form -->
+                                        <div class="tab-pane fade" id="social-links" role="tabpanel"
+                                            aria-labelledby="social-links-tab">
+                                            <form>
+                                                <!-- Add form fields for Social Links here -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-xs-6">
+                                                        <label for="Link1">Show on User/Client Area</label>
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="Switch1">
+                                                            <label class="custom-control-label"
+                                                                for="Switch1">Enable</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-xs-6">
+                                                        <label for="Link2">Show on Login/Register Page</label>
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="Switch2">
+                                                            <label class="custom-control-label"
+                                                                for="Switch2">Enable</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="facebookLink">Facebook</label>
+                                                        <input type="text" class="form-control" id="facebookLink"
+                                                            placeholder="Enter Facebook URL">
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="twitterLink">Twitter</label>
+                                                        <input type="text" class="form-control" id="twitterLink"
+                                                            placeholder="Enter Twitter URL">
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label for="linkedinLink">Linkdin</label>
+                                                        <input type="text" class="form-control" id="linkedinLink"
+                                                            placeholder="Enter Linkedin URL">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="githubLink">Github</label>
+                                                        <input type="text" class="form-control" id="githubLink"
+                                                            placeholder="Enter Github URL">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="mediumLink">Medium</label>
+                                                        <input type="text" class="form-control" id="mediumLink"
+                                                            placeholder="Enter medium URL">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="telegramLink">Telegram</label>
+                                                        <input type="text" class="form-control" id="telegramLink"
+                                                            placeholder="Enter telegram URL">
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Update Button -->
+                                                <div class="text-right mt-5">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!-- API Settings Form -->
+                                        <div class="tab-pane fade" id="api-settings" role="tabpanel"
+                                            aria-labelledby="api-settings-tab">
+                                            <h5>Google reCaptcha v3</h5>
+                                            <form>
+                                                <!-- 1st row: Site Key, Secret Key, Facebook Client ID -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="siteKey">Site Key</label>
+                                                        <input type="text" class="form-control" id="siteKey"
+                                                            placeholder="Enter Site Key">
+                                                        <small class="form-text text-muted">Get the API key <a
+                                                                href="https://www.google.com/recaptcha/admin"
+                                                                target="_blank">here</a>.</small>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="secretKey">Secret Key</label>
+                                                        <input type="text" class="form-control" id="secretKey"
+                                                            placeholder="Enter Secret Key">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="facebookClientId">Facebook Client ID</label>
+                                                        <input type="text" class="form-control" id="facebookClientId"
+                                                            placeholder="Enter Facebook Client ID">
+                                                        <small class="form-text text-muted">In Facebook app, set
+                                                            redirect URL: <a
+                                                                href="https://www.google.com/recaptcha/admin"
+                                                                target="_blank">here</a>.</small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 2nd row: Facebook Client Secret, Google Client ID, Google Client Secret -->
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="facebookClientSecret">Facebook Client Secret</label>
+                                                        <input type="text" class="form-control"
+                                                            id="facebookClientSecret"
+                                                            placeholder="Enter Facebook Client Secret">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="googleClientId">Google Client ID</label>
+                                                        <input type="text" class="form-control" id="googleClientId"
+                                                            placeholder="Enter Google Client ID">
+                                                        <small class="form-text text-muted">In Google app, set redirect
+                                                            URL: <a href="https://www.google.com/recaptcha/admin"
+                                                                target="_blank">here</a>.</small>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="googleClientSecret">Google Client Secret</label>
+                                                        <input type="text" class="form-control" id="googleClientSecret"
+                                                            placeholder="Enter Google Client Secret">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Update Button -->
+                                                <div class="text-right mt-5">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+
+                                        <!-- Advance Settings Form -->
+                                        <div class="tab-pane fade" id="advance" role="tabpanel"
+                                            aria-labelledby="advance-tab">
+                                            <form>
+                                                <!-- Header Code Section -->
+                                                <div class="form-group">
+                                                    <label for="headerCode">Header Code</label>
+                                                    <textarea class="form-control" id="headerCode" rows="5"
+                                                        placeholder="Enter header code"></textarea>
+                                                    <small class="form-text text-muted">Extra area input for header
+                                                        code.</small>
+                                                </div>
+
+
+
+                                                <!-- Footer Code Section -->
+                                                <div class="form-group">
+                                                    <label for="footerCode">Footer Code</label>
+                                                    <textarea class="form-control" id="footerCode" rows="5"
+                                                        placeholder="Enter footer code"></textarea>
+                                                    <small class="form-text text-muted">Extra area input for footer
+                                                        code.</small>
+                                                </div>
+
+                                                <!-- Update Button -->
+                                                <div class="text-right mt-5">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- referral form -->
+                                <div id="referralForm" class="form-container" style="display: none;">
+                                    <h2>Referral Settings</h2>
+                                    <p>Manage your referral system to boost your token sales. Once enable referral
+                                        system option, it will start tracking invitation link also user/contributor able
+                                        to see invitation link on their profile. They can share any where to invite more
+                                        people to join on your platform. You can specify how much bonus a user can get.
+                                    </p>
+                                    <b>Note: To active referral system completly, you have set Show in Visibility by
+                                        edit Referral page from Manage Page</b>
+                                    <br><br>
+
+                                    <h3>Referral System</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" id="referralToggle" onchange="toggleReferralSystem()">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span id="referralStatus">Disabled</span>
+
+                                    <!-- This is the form that will be shown/hidden -->
+                                    <div id="referralDetailsForm" style="display: none;">
+                                        <!-- <h4>Referral Details</h4> -->
+                                        <form class="mt-2">
+                                            <!-- Referral Bonus Allowed -->
+                                            <h5>Invited User (who joined)</h5>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="bonusAllowed">Referral Bonus Allowed</label>
+                                                    <select class="form-control" id="bonusAllowed">
+                                                        <option value="all">All transactions</option>
+                                                        <option value="max1">Max 1 transaction</option>
+                                                        <option value="max3">Max 3 transactions</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">Limit with transaction how many
+                                                        times bonus will add into account for purchase.</small>
+                                                </div>
+
+                                                <!-- Offering Type -->
+                                                <div class="form-group col-md-4">
+                                                    <label for="offeringType">Offering Type</label>
+                                                    <select class="form-control" id="offeringType">
+                                                        <option value="percentage">Percentage</option>
+                                                        <option value="fixed">Fixed/Flat rate</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">Choose whether the referral
+                                                        bonus will be calculated as percentage or fixed rate.</small>
+                                                </div>
+
+                                                <!-- Bonus Offer Amount -->
+                                                <div class="form-group col-md-4">
+                                                    <label for="bonusAmount">Bonus Offer Amount</label>
+                                                    <input type="number" class="form-control" id="bonusAmount"
+                                                        placeholder="Enter bonus amount">
+                                                    <small class="form-text text-muted">Specify bonus amount for who
+                                                        joined.</small>
+                                                </div>
+                                            </div>
+                                            <h5>Referral User (who referred)</h5>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="bonusAllowed">Referral Bonus Allowed</label>
+                                                    <select class="form-control" id="bonusAllowed">
+                                                        <option value="all">All transactions</option>
+                                                        <option value="max1">Max 1 transaction</option>
+                                                        <option value="max3">Max 3 transactions</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">Limit with transaction how many
+                                                        times bonus will add into account for purchase.</small>
+                                                </div>
+
+                                                <!-- Offering Type -->
+                                                <div class="form-group col-md-4">
+                                                    <label for="offeringType">Offering Type</label>
+                                                    <select class="form-control" id="offeringType">
+                                                        <option value="percentage">Percentage</option>
+                                                        <option value="fixed">Fixed/Flat rate</option>
+                                                    </select>
+                                                    <small class="form-text text-muted">Choose whether the referral
+                                                        bonus will be calculated as percentage or fixed rate.</small>
+                                                </div>
+
+                                                <!-- Bonus Offer Amount -->
+                                                <div class="form-group col-md-4">
+                                                    <label for="bonusAmount">Bonus Offer Amount</label>
+                                                    <input type="number" class="form-control" id="bonusAmount"
+                                                        placeholder="Enter bonus amount">
+                                                    <small class="form-text text-muted">Specify bonus amount for who
+                                                        referred.</small>
+                                                </div>
+                                            </div>
+                                            <!-- Toggle Switch for Update -->
+                                            <div class="form-group mt-2">
+                                                <label>Show info to user</label>
+                                                <label class="switch">
+                                                    <input type="checkbox" id="updateToggle">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <small class="form-text text-muted">Referral info show to user on signup
+                                                    page so the user can see who refer him. </small>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- system form -->
+                                <div id="systemstatusForm" class="form-container" style="display: none;">
+                                    <h3>System Information</h3>
+                                    <p>Useful system information about token sales management application.
+
+                                    </p>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-8">
+                                            <h4>Site Environment</h4>
+
+                                            <table class="table table-sm border mt-2">
+                                                <!-- <thead>
+                                                  <tr>
+                                                   <th>xc</th>
+                                                   <td>nbvcxxss789vbnm</td>
+                                                  </tr>
+                                                </thead> -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Site/App Name</th>
+                                                        <td>Enter some text</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <th>Site Main URL</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Site App URL	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Site API Key	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Site Language	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <th>Site App Mode	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Debug Mode	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>HTTPS Connection	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Force SSL (HTTPS)	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Default Upload Directory	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>KYC Upload Directory	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Log Directory	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Cache Directory	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+
+                                                </tbody>
+                                              </table>
+                                            <!-- <ul class="list-group ">
+                                                <li class=" list-group-item"> <strong >Site/App Name</strong>
+                                                    <small> <i class="fa-regular fa-circle-question"></i> </small>some text here.
+                                                </li> 
+                                            </ul> -->
+                                        </div>
+                                         
+                                        <div class="form-group col-md-8 mt-4">
+                                            <h4>Server Environment
+                                            </h4>
+
+                                            <table class="table table-sm border mt-2">
+                                                <!-- <thead>
+                                                  <tr>
+                                                   <th>xc</th>
+                                                   <td>nbvcxxss789vbnm</td>
+                                                  </tr>
+                                                </thead> -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Server Info	</th>
+                                                        <td>Enter some text</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <th>Server Timezone</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>PHP Version	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>URL version	</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>MySQL Version</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <th>PHP Post Max Size</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Max Upload Size</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>PHP Memory Limit</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>PHP Time Limit</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>PHP Max Input Vars		</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    
+                                                    
+
+                                                </tbody>
+                                              </table>
+                                           
+                                        </div>
+
+                                        <div class="form-group col-md-8 mt-4">
+                                            <h4>Available Payment Module
+
+                                            </h4>
+
+                                            <table class="table table-sm border mt-2">
+                                                <!-- <thead>
+                                                  <tr>
+                                                   <th>xc</th>
+                                                   <td>nbvcxxss789vbnm</td>
+                                                  </tr>
+                                                </thead> -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Manual Module  </th>
+                                                        <td>Enter some text</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <th>Bank Module	  </th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Paypal Module  </th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    
+                                                    
+                                                </tbody>
+                                              </table>
+                                           
+                                        </div>
+                                        <div class="form-group col-md-8 mt-4">
+                                            <h4>Application Environment
+
+
+                                            </h4>
+
+                                            <table class="table table-sm border mt-2">
+                                                <!-- <thead>
+                                                  <tr>
+                                                   <th>xc</th>
+                                                   <td>nbvcxxss789vbnm</td>
+                                                  </tr>
+                                                </thead> -->
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Application Identifier Key	</th>
+                                                        <td>Enter some text</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <th>Application Version</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Purchase Code</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>License Type</th>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>License Status</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>License Valid For</th>
+                                                        <td>Enter some text</td>
+                                                    </tr>
+                                                </tbody>
+                                              </table>
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- role and permission -->
+                                <div id="role&permissionForm" class="form-container" style="display: none;">
+
+
+                                    <div class="col-lg-12 grid-margin stretch-card">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Role List</h4>
+                                                <p class="card-description">
+                                                <div>
+
+                                                    <button class="btn btn-info mt-1" data-toggle="modal"
+                                                        data-target="#addUserModal">
+                                                        <i class="ti-plus mr-2 "></i> Add User
+                                                    </button>
+                                                </div>
+                                                </p>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Display Name</th>
+                                                                <th>Last Update</th>
+                                                                <th>Role Status</th>
+
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Jacob</td>
+                                                                <td>admin</td>
+                                                                <td>2024-05-29</td>
+                                                                <td><label class="badge badge-primary">Active</label>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="dropdown">
+                                                                        <i class="fa-solid fa-ellipsis"
+                                                                            id="dropdownMenuButton1"
+                                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                                            aria-expanded="false"></i>
+
+                                                                        <div class="dropdown-menu"
+                                                                            aria-labelledby="dropdownMenuButton1">
+                                                                            <a class="dropdown-item" href="#"
+                                                                                data-toggle="modal"
+                                                                                data-target="#editModal1">
+                                                                                <i class="fas fa-edit mr-2"></i> Edit
+                                                                            </a>
+                                                                            <a class="dropdown-item" href="#"
+                                                                                data-toggle="modal"
+                                                                                data-target="#permissionModal1">
+                                                                                <i class="fas fa-user-shield mr-2"></i>
+                                                                                Permission
+                                                                            </a>
+                                                                            <a class="dropdown-item" href="#"
+                                                                                data-toggle="modal"
+                                                                                data-target="#schemeModal1">
+                                                                                <i class="fas fa-cogs mr-2"></i> Scheme
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--  add role Modalform  -->
+                                <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="addUserModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="addUserForm">
+                                                    <div class="form-group">
+                                                        <label for="roleName">Role Name</label>
+                                                        <input type="text" class="form-control" id="roleName"
+                                                            name="roleName" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="displayName">Display Name</label>
+                                                        <input type="text" class="form-control" id="displayName"
+                                                            name="displayName" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="themeColor">Select Theme Color</label>
+            <select class="form-control" id="themeColor" name="themeColor">
+              <option value="bg-primary" class="bg-primary text-white">Primary</option>
+              <option value="bg-secondary" class="bg-secondary text-white">Secondary</option>
+              <option value="bg-success" class="bg-success text-white">Success</option>
+              <option value="bg-warning" class="bg-warning text-dark">Warning</option>
+              <option value="bg-danger" class="bg-danger text-white">Danger</option>
+              <option value="bg-info" class="bg-info text-white">Info</option>
+              <option value="bg-dark" class="bg-dark text-white">Dark</option>
+              <option value="bg-light" class="bg-light text-dark">Light</option>
+            </select>
+                                                      </div>
+                                                      
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    form="addUserForm">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="editModal1" tabindex="-1" role="dialog"
+                                    aria-labelledby="editModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel1">Edit Role</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="editRoleForm">
+                                                    <div class="form-group">
+                                                        <label for="roleName">Role Name</label>
+                                                        <input type="text" class="form-control" id="roleName"
+                                                            placeholder="Enter role name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="displayName">Display Name</label>
+                                                        <input type="text" class="form-control" id="displayName"
+                                                            placeholder="Enter display name">
+                                                    </div>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input" id="enableOtp">
+                                                        <label class="form-check-label" for="enableOtp">Enable
+                                                            OTP</label>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Permission Modal -->
+                                <div class="modal fade" id="permissionModal1" tabindex="-1" role="dialog"
+                                    aria-labelledby="permissionModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="permissionModalLabel1">Permission</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Permission form content -->
+                                                <form id="permissionForm">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission1">
+                                                                    <label class="form-check-label"
+                                                                        for="permission1">Permission 1</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission2">
+                                                                    <label class="form-check-label"
+                                                                        for="permission2">Permission 2</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission3">
+                                                                    <label class="form-check-label"
+                                                                        for="permission3">Permission 3</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission4">
+                                                                    <label class="form-check-label"
+                                                                        for="permission4">Permission 4</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Repeat similar rows for other permissions -->
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission5">
+                                                                    <label class="form-check-label"
+                                                                        for="permission5">Permission 5</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission6">
+                                                                    <label class="form-check-label"
+                                                                        for="permission6">Permission 6</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission7">
+                                                                    <label class="form-check-label"
+                                                                        for="permission7">Permission 7</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission8">
+                                                                    <label class="form-check-label"
+                                                                        for="permission8">Permission 8</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Continue with more rows until permission 20 -->
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission9">
+                                                                    <label class="form-check-label"
+                                                                        for="permission9">Permission 9</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission10">
+                                                                    <label class="form-check-label"
+                                                                        for="permission10">Permission 10</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission11">
+                                                                    <label class="form-check-label"
+                                                                        for="permission11">Permission 11</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission12">
+                                                                    <label class="form-check-label"
+                                                                        for="permission12">Permission 12</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission13">
+                                                                    <label class="form-check-label"
+                                                                        for="permission13">Permission 13</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission14">
+                                                                    <label class="form-check-label"
+                                                                        for="permission14">Permission 14</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission15">
+                                                                    <label class="form-check-label"
+                                                                        for="permission15">Permission 15</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission16">
+                                                                    <label class="form-check-label"
+                                                                        for="permission16">Permission 16</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission17">
+                                                                    <label class="form-check-label"
+                                                                        for="permission17">Permission 17</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission18">
+                                                                    <label class="form-check-label"
+                                                                        for="permission18">Permission 18</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission19">
+                                                                    <label class="form-check-label"
+                                                                        for="permission19">Permission 19</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        id="permission20">
+                                                                    <label class="form-check-label"
+                                                                        for="permission20">Permission 20</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Scheme Modal -->
+                                <div class="modal fade" id="schemeModal1" tabindex="-1" role="dialog"
+                                    aria-labelledby="schemeModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="schemeModalLabel1">Scheme</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Scheme form content -->
+                                                <form id="schemeForm">
+                                                    <div class="form-group">
+                                                        <label for="schemeSelect">Select Scheme</label>
+                                                        <select class="form-control" id="schemeSelect">
+                                                            <option value="" disabled selected>Select a scheme</option>
+                                                            <option value="scheme1">Scheme 1</option>
+                                                            <option value="scheme2">Scheme 2</option>
+                                                            <option value="scheme3">Scheme 3</option>
+                                                            <option value="scheme4">Scheme 4</option>
+                                                            <!-- Add more options as needed -->
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="form-group">
+                                                    <label for="roleName">Role Name</label>
+                                                    <input type="text" class="form-control" id="roleName" placeholder="Enter role name">
+                                                </div> -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- comission form -->
+                                <div class="form-container" id="comissionForm" style="display: none;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Comission Slab</h4>
+                                            <p class="card-description">
+                                            <div>
+
+                                                <button class="btn btn-info mt-1" data-toggle="modal"
+                                                    data-target="#schemeModal1">
+                                                    <i class="ti-plus mr-1 "></i> Add
+                                                </button>
+                                            </div>
+                                            </p>
+
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Profile</th>
+                                                            <th>VatNo.</th>
+                                                            <th>Created</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Jacob</td>
+                                                            <td>53275531</td>
+                                                            <td>12 May 2017</td>
+                                                            <td><label class="badge badge-danger">Pending</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Messsy</td>
+                                                            <td>53275532</td>
+                                                            <td>15 May 2017</td>
+                                                            <td><label class="badge badge-warning">In progress</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>John</td>
+                                                            <td>53275533</td>
+                                                            <td>14 May 2017</td>
+                                                            <td><label class="badge badge-info">Fixed</label></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Peter</td>
+                                                            <td>53275534</td>
+                                                            <td>16 May 2017</td>
+                                                            <td><label class="badge badge-success">Completed</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dave</td>
+                                                            <td>53275535</td>
+                                                            <td>20 May 2017</td>
+                                                            <td><label class="badge badge-warning">In progress</label>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+
+                                        <!-- Add more form containers here for other options -->
+                                    </div>
+                                </div>
+
+                                <!-- api  -->
+                                <div class="form-container" id="apiForm" style="display: none;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">API List</h4>
+                                            <!-- <p class="card-description">
+                                            <div>
+
+                                                <button class="btn btn-info mt-1" data-toggle="modal"
+                                                    data-target="#schemeModal1">
+                                                    <i class="ti-plus mr-1 "></i> Add
+                                                </button>
+                                            </div>
+                                            </p> -->
+
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Profile</th>
+                                                            <th>VatNo.</th>
+                                                            <th>Created</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Jacob</td>
+                                                            <td>53275531</td>
+                                                            <td>12 May 2017</td>
+                                                            <td><i class="fas fa-eye view-icon" data-toggle="modal"
+                                                                    data-target="#viewModal"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Messsy</td>
+                                                            <td>53275532</td>
+                                                            <td>15 May 2017</td>
+                                                            <td><i class="fas fa-eye view-icon" data-toggle="modal"
+                                                                    data-target="#viewModal"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>John</td>
+                                                            <td>53275533</td>
+                                                            <td>14 May 2017</td>
+                                                            <td><i class="fas fa-eye view-icon" data-toggle="modal"
+                                                                    data-target="#viewModal"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Peter</td>
+                                                            <td>53275534</td>
+                                                            <td>16 May 2017</td>
+                                                            <td><i class="fas fa-eye view-icon" data-toggle="modal"
+                                                                    data-target="#viewModal"></i></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Dave</td>
+                                                            <td>53275535</td>
+                                                            <td>20 May 2017</td>
+                                                            <td><i class="fas fa-eye view-icon" data-toggle="modal"
+                                                                    data-target="#viewModal"></i></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+                                        <!-- Modal api view -->
+                                        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="viewModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+
+                                                        <h5 class="modal-title" id="viewModalLabel">Recharge Setting
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <form class="form-row">
+                                                            <div class="form-group col-lg-12">
+
+                                                                <label for="rechargestatus">Recharge Status</label><br>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="rechargeStatus" id="activeStatus"
+                                                                            value="active">
+                                                                        <label class="form-check-label"
+                                                                            for="activeStatus">Active</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="rechargeStatus" id="inactiveStatus"
+                                                                            value="inactive">
+                                                                        <label class="form-check-label"
+                                                                            for="inactiveStatus">Inactive</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="apiTokenSection" class="mt-3">
+                                                                    <label for="apiToken">API Token</label>
+                                                                    <div class="d-flex">
+                                                                        <input type="text" class="form-control mr-2"
+                                                                            id="apiToken" placeholder="Enter API Token">
+                                                                        <!-- <button type="button" class="btn btn-primary">Update</button> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-12" id="testRechargeSection"
+                                                                style="display: none;">
+                                                                <h4>Test Recharge</h4>
+                                                                <label for="mobileNumber">Mobile number</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="mobileNumber"
+                                                                    placeholder="Enter Mobile Number.">
+                                                                <label for="amount">Recharge Amount</label>
+                                                                <input type="text" class="form-control" id="amount"
+                                                                    placeholder="Enter Recharge Amount.">
+                                                                <label for="dropdownOption">Select Operator</label>
+                                                                <select class="form-control" id="dropdownOption">
+                                                                    <option value="option1">Option 1</option>
+                                                                    <option value="option2">Option 2</option>
+                                                                    <option value="option3">Option 3</option>
+                                                                </select>
+                                                                <!-- <button type="button" class="btn btn-primary mt-2">Update</button> -->
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-dismiss="modal">Update</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Add more form containers here for other options -->
+                                    </div>
+                                </div>
+
+
+<!-- retailer -->
+<div id="retailerForm" class="form-container" style="display: none;">
+    <h2>Retailer Module settings</h2>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-4 mt-3">
+                <label for="news">News</label>
+                <input type="text" class="form-control" id="news"
+                    placeholder="well come to admin news update">
+            </div>
+            <div class="form-group col-md-4 mt-3">
+                <label for="banner">Upload Banner File</label>
+                <input type="file" class="form-control form-control-file"
+                    id="banner">
+            </div>
+            <div class="form-group col-md-4 mt-3">
+                <label for="notification">Notification</label>
+                <input type="text" class="form-control "
+                    id="notification">
+            </div>
+        </div>
+
+        <!-- Update Button -->
+        <div class="text-right mt-5">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
+
+                                
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="../../vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../../vendors/chart.js/Chart.min.js"></script>
+        <script src="../../vendors/progressbar.js/progressbar.min.js"></script>
+        <script src="../../vendors/jvectormap/jquery-jvectormap.min.js"></script>
+        <script src="../../vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="../../vendors/owl-carousel-2/owl.carousel.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../js/off-canvas.js"></script>
+        <script src="../../js/hoverable-collapse.js"></script>
+        <script src="../../js/misc.js"></script>
+        <script src="../../js/settings.js"></script>
+        <script src="../../js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="../../js/dashboard.js"></script>
+        <!-- End custom js for this page -->
+
+        <!-- Additional scripts -->
+
+        <!-- opening of setting forms and activation of dropdown -->
+        <script>
+            function showForms(formId, element) {
+                var forms = document.querySelectorAll('.form-container');
+                forms.forEach(function (form) {
+                    form.style.display = 'none';
+                });
+                document.getElementById(formId).style.display = 'block';
+
+                var items = document.querySelectorAll('.list-group-item a');
+                items.forEach(function (item) {
+                    item.classList.remove('active-item');
+                });
+                element.classList.add('active-item');
+            }
+        </script>
+
+        <!-- toggler switch js -->
+        <script>
+            function toggleReferralSystem() {
+                var checkBox = document.getElementById("referralToggle");
+                var statusText = document.getElementById("referralStatus");
+                var detailsForm = document.getElementById("referralDetailsForm");
+
+                if (checkBox.checked == true) {
+                    statusText.innerHTML = "Enabled";
+                    detailsForm.style.display = "block";
+                } else {
+                    statusText.innerHTML = "Disabled";
+                    detailsForm.style.display = "none";
+                }
+            }
+        </script>
+        <!-- js for view option in api  -->
+        <script>
+
+            $(document).ready(function () {
+                $('.view-icon').on('click', function () {
+                    var $row = $(this).closest('tr');
+                    var profile = $row.find('td:nth-child(1)').text();
+                    var vatNo = $row.find('td:nth-child(2)').text();
+                    var created = $row.find('td:nth-child(3)').text();
+                    var status = $row.find('td:nth-child(4)').text();
+
+                    $('#viewModal #profile').val(profile);
+                    $('#viewModal #vatNo').val(vatNo);
+                    $('#viewModal #created').val(created);
+                    $('#viewModal #status').val(status);
+                });
+            });
+        </script>
+
+        <!-- js for view  option in api -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var activeStatus = document.getElementById('activeStatus');
+                var inactiveStatus = document.getElementById('inactiveStatus');
+                var testRechargeSection = document.getElementById('testRechargeSection');
+
+                activeStatus.addEventListener('change', function () {
+                    if (this.checked) {
+                        testRechargeSection.style.display = 'block';
+                    }
+                });
+
+                inactiveStatus.addEventListener('change', function () {
+                    if (this.checked) {
+                        testRechargeSection.style.display = 'none';
+                    }
+                });
+
+                // Set default state
+                if (activeStatus.checked) {
+                    testRechargeSection.style.display = 'block';
+                } else if (inactiveStatus.checked) {
+                    testRechargeSection.style.display = 'none';
+                }
+            });
+        </script>
+
+
+
+</body>
+
+</html>

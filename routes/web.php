@@ -21,6 +21,7 @@ use App\Http\Controllers\PermissionController;
 Route::middleware('guest')->get('/login',[UserModelController::class,'login'])->name('login');
 Route::get('/logout',[UserModelController::class,'logout'])->name('logout');
 Route::post('/loginverify',[UserModelController::class,'verifylogin']);
+Route::get('/registersubmit',[UserModelController::class,'register']);
 
 Route::middleware('auth')->group(function () {
 
@@ -36,12 +37,15 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('setting')->group(function (){
         Route::get('/',[SettingController::class,'index']);
+        Route::post('/addrole',[SettingController::class,'addrole']);
     });
-    
+
     Route::prefix('member')->group(function(){
         Route::get('/',[UserController::class,'index']);
         Route::post('/store',[UserController::class,'store']);
         Route::get('/editdetails/{id}',[UserController::class,'edit']);
+        Route::post('/edituserdata',[UserController::class,'edituserdata']);
+        Route::post('/changestatus',[UserController::class,'changestatus']);
         Route::post('/resetpasswords',[UserController::class,'resetpassword']);
     });
 });

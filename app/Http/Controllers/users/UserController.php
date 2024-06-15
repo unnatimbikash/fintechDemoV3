@@ -6,19 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
+// use App\Models\roleModel as Roles;
+
 
 
 class UserController extends Controller
 {
-    public function index(){
-        $roles=Role::orderBy('id','ASC')->where('name','!=','Admin')->get();
-        $users=User::get();
-        foreach($users as $user){
-            $user->role=Role::select('name')->where('id',$user->role_id)->first()->name;
+    public function index(Request $request){
+        $roles = Role::where('name', '!=', 'Admin')->orderBy('id', 'ASC')->get();
+        $searchuser = User::select('id', 'name')->get();
+        $userQuery = User::with('role');
+        if ($request->name) {
+            $userQuery->where('name', 'like', '%' . $request->name . '%');
         }
-        return view('users.index',compact('roles','users'));
+        if ($request->data && $request->data != "all") {
+            $userQuery->where('role_id', $request->data);
+        }
+        $users = $userQuery->paginate(10);
+        $name = $request->name;
+        $data = $request->data;
+        return view('users.index', compact('roles', 'users', 'data', 'searchuser', 'name'));
     }
 
     public function store(Request $request){
@@ -60,8 +70,36 @@ class UserController extends Controller
         return response()->json(['error'=>'password does not match'],500);
     }
    }
+
    public function edit($id){
      $user=User::where('id',$id)->first();
      return view('users.edit',compact('user'));
+   }
+   public function edituserdata(Request $request){
+
+    $data=[
+        "name" => $request->name,
+        "mobile" => $request->mobile,
+        "email" =>  $request->email,
+        "dob" =>  $request->dob,
+        "aadharmobile" => $request->aadharmobile,
+        "address" => $request->address,
+        "city" =>  $request->city,
+        "state" =>  $request->state,
+        "pincode" =>  $request->pincode,
+        "shopname" => $request->shopname,
+        "designation" => $request->designation
+    ];
+    User::where('id',$request->id)->update($data);
+        return back()->with(['message'=>"updated successfully"]);
+   }
+   public function changestatus(Request $request){
+    // dd($request);
+    $data=[
+        'status'=>$request->status,
+        'rejected_remarks'=>$request->rejected_remarks
+    ];
+    User::where('id',$request->id)->update($data);
+    return back()->with(['message'=>"updated successfully"]);
    }
 }
