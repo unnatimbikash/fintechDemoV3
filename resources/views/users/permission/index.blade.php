@@ -8,9 +8,11 @@
                     <h4 class="card-title">Permission List</h4>
                     <p class="card-description">
                         <div>
+                            @can('add')
                             <button class="btn btn-info mt-1" data-toggle="modal" data-target="#addpermission">
                                 <i class="ti-plus mr-2 "></i> Add Permission
                             </button>
+                            @endcan
                         </div>
                     </p> 
                     <div class="table-responsive">
@@ -34,12 +36,13 @@
                                     <td>
                                         <div class="dropdown">
                                             <i class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-
+                                            @can('edit')
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editModal1">
                                                     <i class="fas fa-edit mr-2"></i> Edit
                                                 </a>
                                             </div>
+                                            @endcan
                                         </div>
                                     </td>
                                 </tr>

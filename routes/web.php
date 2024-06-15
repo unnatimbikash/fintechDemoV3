@@ -23,7 +23,6 @@ Route::get('/logout',[UserModelController::class,'logout'])->name('logout');
 Route::post('/loginverify',[UserModelController::class,'verifylogin']);
 
 Route::middleware('auth')->group(function () {
-
     Route::get('/dashboard',[DashboardController::class,'show'])->name('dashboard');
     Route::get('/', function () {
         return redirect()->route('dashboard');

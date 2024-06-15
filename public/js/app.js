@@ -85,15 +85,27 @@ $(document).ready(function () {
                         timer: 2000,
                         timerProgressBar: true
                     });
+                    $('#permissionModalCenter').modal('hide');
                 }
             },
-            error: function (data){
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Something Went Wrong',
-                    icon: 'error',
-                    timer: 2000,
-                });
+            error: function(xhr, status, error) {
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    //toastr.error(xhr.responseJSON.message);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: xhr.responseJSON.message,
+                        icon: 'error',
+                        timer: 2000,
+                    });
+                } else {
+                    // toastr.error('An unexpected error occurred.');
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Something went Wrong',
+                        icon: 'error',
+                        timer: 2000,
+                    });
+                }
             }
         });
     });

@@ -16,9 +16,11 @@
                 <h4 class="card-title">Role List</h4>
                 <p class="card-description">
                 <div>
+                    @can('addrole')
                     <button class="btn btn-info mt-1" data-toggle="modal" data-target="#addrole">
                         <i class="ti-plus mr-2 "></i> Add Role
                     </button>
+                    @endcan
                 </div>
                 </p>
                 <div class="table-responsive">
@@ -45,13 +47,17 @@
                                         <i class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            @can('editrole')
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editModal1">
                                                 <i class="fas fa-edit mr-2"></i> Edit
                                             </a>
+                                            @endcan
+                                            @can('view')
                                             <span class="dropdown-item"  data-toggle="modal" data-target="#permissionModalCenter" data-value="{{$role}}" >
                                                 <i class="fas fa-user-shield mr-2"></i>
                                                 Permission
                                             </span>
+                                            @endcan
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#schemeModal1">
                                                 <i class="fas fa-cogs mr-2"></i> Scheme
                                             </a>
@@ -119,7 +125,9 @@
                     <div id="container_id"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        @can('assignrollpermission')
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        @endcan
                     </div>
                 </form>
             </div>
@@ -171,7 +179,6 @@
             let val=datapermission.data('value');
             $('#headerrolename').text(val.name);
             $('#roleid').val(val.id);
-            $('#container_id').html('');
             $.ajax({
                 url: "{{URL::to('/getrolepermission')}}",
                 method: 'POST',
@@ -181,6 +188,7 @@
                 },
                 cache:false,
                 success: function (data) {
+                $('#container_id').html('');
                 if(data.status=='success'){
                         var permission=data.permission;
                         var allpermission=data.groupdata;

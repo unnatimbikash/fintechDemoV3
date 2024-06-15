@@ -188,18 +188,22 @@
     @foreach(\App\Models\Menu::with('children')->where('is_parent',1)->orderBy('menu_order','ASC')->get() as $parent)
         @if(!empty($parent->permissions))
           <li class="nav-item">
-          <a class="nav-link {{ Request::is($parent->url) ? 'active' : '' }}" @if(count($parent->children) > 0)data-toggle="collapse" href="#{{$parent->slug}}" @else href="{{$parent->url}}" @endif aria-expanded="false" aria-controls="{{ $parent->name }}">
+            @can($parent->permissions)
+            <a class="nav-link {{ Request::is($parent->url) ? 'active' : '' }}" @if(count($parent->children) > 0)data-toggle="collapse" href="#{{$parent->slug}}" @else href="{{$parent->url}}" @endif aria-expanded="false" aria-controls="{{ $parent->name }}">
                 <i class="{{$parent->icon}}" style="font-size: 10px;"></i>
                 <span class="menu-title" style="font-size:15px; margin-left: 9px;">{{$parent->name}}</span> 
                 @if(count($parent->children)>0)         
                   <i class="menu-arrow" style="margin-left: 25px;color: aliceblue;"></i>   
                 @endif    
-              </a>
+            </a>
+            @endcan
                 @if($parent->is_parent==1)
                     <div class="collapse" id="{{$parent->slug}}">
                         <ul class="nav flex-column sub-menu">
-                            @foreach($parent->children as $child)
-                                <li class="nav-item"> <a class="nav-link @if(Request::is($child->url)) active @endif" href="{{url($child->url)}}">{{$child->name}}</a></li>
+                            @foreach($parent->children as $child) 
+                                @can($child->permissions)
+                                    <li class="nav-item"> <a class="nav-link @if(Request::is($child->url)) active @endif" href="{{url($child->url)}}">{{$child->name}}</a></li>
+                                @endcan
                             @endforeach
                         </ul>
                     </div>

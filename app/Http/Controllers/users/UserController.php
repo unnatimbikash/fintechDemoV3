@@ -6,22 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
+
 
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+       // $this->middleware(['role:Admin','permission:viewuser|adduser']);
+        $this->middleware(['permission:viewuser'])->only(['index']);
+        $this->middleware(['permission:adduser'])->only(['store']);
+    }
+
     public function index(){
-        $roles=Role::orderBy('id','ASC')->where('name','!=','Admin')->get();
-        $users=User::get();
-        foreach($users as $user){
-            $user->role=Role::select('name')->where('id',$user->role_id)->first()->name;
-        }
+        $roles=Role::orderBy('id','ASC')->get();
+        $users=User::paginate(paginate());
         return view('users.index',compact('roles','users'));
     }
 
     public function store(Request $request){
+        dd('ok');
         $validate=$request->validate([
             'roleid'=>'required|numeric',
             'name'=>'required|alpha',
@@ -46,6 +53,7 @@ class UserController extends Controller
         $user->save();
         $user->agentcode='abc'.$curYear.$user->id;
         $user->save();
+        $user->syncRoles(Role::findById($request->roleid));
 
         return back()->with('success',__('messages.usersave'));
     }
